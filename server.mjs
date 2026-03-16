@@ -9,7 +9,7 @@ import { loadManifest } from './lib/manifest-loader.mjs'
 const env = EnvironmentManager.load( {
     required: [ 'LLM_BASE_URL', 'LLM_API_KEY' ],
     optional: [ 'NODE_ENV', 'CORS_ORIGIN' ],
-    envFile: '../../hackathon.env'
+    envFile: '../../.hackathon.env'
 } )
 
 const PORT = process.env.PORT || '4100'
