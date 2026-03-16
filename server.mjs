@@ -1,19 +1,21 @@
 import express from 'express'
 import { AgentToolsServer } from 'mcp-agent-server'
 
+import { EnvironmentManager } from './lib/EnvironmentManager.mjs'
 import { loadSchemas } from './lib/schema-loader.mjs'
 import { loadManifest } from './lib/manifest-loader.mjs'
 
 
-const PORT = process.env.PORT || 4100
-const LLM = {
-    baseURL: process.env.LLM_BASE_URL || 'https://api.anthropic.com',
-    apiKey: process.env.ANTHROPIC_API_KEY
-}
+const env = EnvironmentManager.load( {
+    required: [ 'LLM_BASE_URL', 'LLM_API_KEY', 'PORT' ],
+    optional: [ 'NODE_ENV', 'CORS_ORIGIN' ],
+    envFile: '../../hackathon.env'
+} )
 
-if( !LLM.apiKey ) {
-    console.error( 'ANTHROPIC_API_KEY environment variable is required' )
-    process.exit( 1 )
+const PORT = env[ 'PORT' ]
+const LLM = {
+    baseURL: env[ 'LLM_BASE_URL' ],
+    apiKey: env[ 'LLM_API_KEY' ]
 }
 
 
@@ -43,6 +45,7 @@ async function startServer() {
         routePath: '/mcp/bahnhof'
     } )
     app.use( bahnhofMcp.middleware() )
+    app.use( bahnhofMcp.sseMiddleware() )
     console.log( '  /mcp/bahnhof — Bahnhofs-Ueberleben (ready)' )
 
 
@@ -83,6 +86,7 @@ async function startServer() {
         routePath: '/mcp/main'
     } )
     app.use( mainMcp.middleware() )
+    app.use( mainMcp.sseMiddleware() )
     console.log( '  /mcp/main — Anschluss-Mobility Main Agent (ready)' )
 
 
@@ -90,11 +94,12 @@ async function startServer() {
     app.get( '/health', ( req, res ) => {
         res.json( {
             status: 'ok',
-            agents: {
-                main: '/mcp/main',
-                bahnhof: '/mcp/bahnhof',
-                tickets: '/mcp/tickets'
-            }
+            agents: [
+                'anschluss-mobility',
+                'bahnhofs-ueberleben',
+                'ticketkauf'
+            ],
+            uptime: Math.floor( process.uptime() )
         } )
     } )
 
@@ -102,6 +107,7 @@ async function startServer() {
     app.listen( PORT, () => {
         console.log( `\nHackathon Anschluss-Mobility Server running on http://localhost:${PORT}` )
         console.log( `  Main Agent:  POST http://localhost:${PORT}/mcp/main` )
+        console.log( `  Events SSE:  GET  http://localhost:${PORT}/events` )
         console.log( `  Health:      GET  http://localhost:${PORT}/health` )
     } )
 }
