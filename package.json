@@ -5,7 +5,7 @@
     "description": "Multi-agent mobility system for the DB InfraGO Hackathon - Anschluss erreichen",
     "main": "server.mjs",
     "scripts": {
-        "start:dev": "NODE_ENV=development node server.mjs",
+        "start:dev": "NODE_ENV=development PORT=4100 node server.mjs",
         "start:staging": "NODE_ENV=staging node server.mjs"
     },
     "dependencies": {
