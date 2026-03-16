@@ -1,0 +1,16 @@
+{
+    "name": "hackathon-anschluss-erreichen",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Multi-agent mobility system for the DB InfraGO Hackathon - Anschluss erreichen",
+    "main": "server.mjs",
+    "scripts": {
+        "start": "node server.mjs",
+        "dev": "node --watch server.mjs"
+    },
+    "dependencies": {
+        "express": "^4.21.0",
+        "mcp-agent-server": "file:../mcp-agent-server",
+        "flowmcp": "file:../flowmcp-core"
+    }
+}
