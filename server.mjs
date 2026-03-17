@@ -21,6 +21,7 @@ const LLM = {
 
 const app = express()
 app.use( express.json() )
+app.use( express.static( 'public' ) )
 
 // --- CORS ---
 const corsOrigin = env[ 'CORS_ORIGIN' ]
@@ -64,7 +65,8 @@ async function startServer() {
             'overpass-mobility',
             'transport-rest-db',
             'nominatim',
-            'bright-sky'
+            'bright-sky',
+            'datetime-utils'
         ]
     } )
 
@@ -87,7 +89,8 @@ async function startServer() {
             'transport-rest-db',
             'flixbus',
             'nominatim',
-            'bright-sky'
+            'bright-sky',
+            'datetime-utils'
         ]
     } )
 

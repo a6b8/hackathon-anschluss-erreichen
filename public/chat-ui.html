@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anschluss Mobility — Chat</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; }
+
+        /* Header */
+        header { background: #1a1a1a; border-bottom: 1px solid #333; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+        header h1 { font-size: 16px; font-weight: 600; color: #fff; }
+        #status-bar { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #888; }
+        #connection-dot { width: 8px; height: 8px; border-radius: 50%; background: #666; flex-shrink: 0; }
+        #connection-dot.connected { background: #4ade80; }
+        #connection-dot.disconnected { background: #ef4444; }
+        #agent-status { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .spinner { width: 16px; height: 16px; border: 2px solid #333; border-top: 2px solid #4ade80; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .spinner.hidden { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Agent Selector */
+        #agent-select { background: #222; color: #e0e0e0; border: 1px solid #444; border-radius: 6px; padding: 4px 8px; font-size: 13px; cursor: pointer; }
+
+        /* Messages */
+        main { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 14px; line-height: 1.6; word-wrap: break-word; }
+        .message.user { align-self: flex-end; background: #1d4ed8; color: #fff; border-bottom-right-radius: 4px; }
+        .message.agent { align-self: flex-start; background: #1a1a1a; border: 1px solid #333; border-bottom-left-radius: 4px; }
+        .message.agent h2 { font-size: 15px; margin: 8px 0 4px; color: #4ade80; }
+        .message.agent h3 { font-size: 14px; margin: 6px 0 3px; color: #60a5fa; }
+        .message.agent ul, .message.agent ol { margin: 4px 0 4px 20px; }
+        .message.agent li { margin: 2px 0; }
+        .message.agent strong { color: #fff; }
+        .message.agent code { background: #222; padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+        .message.error { background: #1a0000; border-color: #ef4444; color: #fca5a5; }
+        .message .tool-badge { display: inline-block; background: #1e3a5f; color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin: 2px 4px 2px 0; }
+        .message .meta { font-size: 11px; color: #666; margin-top: 8px; }
+        #welcome { text-align: center; color: #555; margin-top: 40px; font-size: 14px; }
+
+        /* Footer */
+        footer { background: #1a1a1a; border-top: 1px solid #333; padding: 12px 20px; display: flex; gap: 8px; flex-shrink: 0; }
+        #user-input { flex: 1; background: #222; color: #e0e0e0; border: 1px solid #444; border-radius: 8px; padding: 10px 14px; font-size: 14px; font-family: inherit; resize: none; outline: none; min-height: 20px; max-height: 120px; }
+        #user-input:focus { border-color: #4ade80; }
+        #user-input:disabled { opacity: 0.5; }
+        #send-btn { background: #4ade80; color: #000; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+        #send-btn:hover { background: #22c55e; }
+        #send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <h1>Anschluss Mobility</h1>
+            <select id="agent-select">
+                <option value="main">Main Agent</option>
+                <option value="bahnhof">Bahnhof-Ueberleben</option>
+                <option value="tickets">Ticketkauf</option>
+            </select>
+        </div>
+        <div id="status-bar">
+            <span id="connection-dot"></span>
+            <span id="agent-status">Idle</span>
+            <div class="spinner hidden" id="loading-spinner"></div>
+        </div>
+    </header>
+
+    <main id="messages">
+        <div id="welcome">Stelle eine Frage zu deiner Reise.</div>
+    </main>
+
+    <footer>
+        <textarea id="user-input" placeholder="z.B. Ich bin am Bahnhof Marburg gestrandet..." rows="1"></textarea>
+        <button id="send-btn">Senden</button>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+    <script>
+        const messagesEl = document.getElementById( 'messages' )
+        const inputEl = document.getElementById( 'user-input' )
+        const sendBtn = document.getElementById( 'send-btn' )
+        const statusEl = document.getElementById( 'agent-status' )
+        const spinnerEl = document.getElementById( 'loading-spinner' )
+        const dotEl = document.getElementById( 'connection-dot' )
+        const agentSelect = document.getElementById( 'agent-select' )
+        const welcomeEl = document.getElementById( 'welcome' )
+
+        let isWorking = false
+        let sessionIds = {}
+        const baseUrl = window.location.origin
+
+        // --- SSE Connection ---
+        function connectSSE() {
+            const evtSource = new EventSource( baseUrl + '/events' )
+
+            evtSource.onopen = function() {
+                dotEl.className = 'connected'
+                dotEl.id = 'connection-dot'
+            }
+
+            evtSource.onerror = function() {
+                dotEl.className = 'disconnected'
+                dotEl.id = 'connection-dot'
+            }
+
+            const eventTypes = [ 'agent:start', 'agent:status', 'agent:complete', 'agent:error' ]
+            eventTypes.forEach( function( type ) {
+                evtSource.addEventListener( type, function( event ) {
+                    const payload = JSON.parse( event.data )
+                    handleSSE( type, payload )
+                } )
+            } )
+        }
+
+        function handleSSE( type, payload ) {
+            if( type === 'agent:start' ) {
+                setStatus( 'Thinking...', true )
+            } else if( type === 'agent:status' ) {
+                const msg = payload.message || ''
+                const round = payload.round || 0
+                setStatus( 'Round ' + round + ' | ' + msg, true )
+            } else if( type === 'agent:complete' ) {
+                setStatus( 'Complete', false )
+            } else if( type === 'agent:error' ) {
+                setStatus( 'Error: ' + ( payload.error || 'Unknown' ), false )
+            }
+        }
+
+        function setStatus( text, working ) {
+            statusEl.textContent = text
+            isWorking = working
+            spinnerEl.className = working ? 'spinner' : 'spinner hidden'
+            inputEl.disabled = working
+            sendBtn.disabled = working
+        }
+
+        // --- MCP Handshake ---
+        async function mcpPost( url, body, sessionId ) {
+            const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream' }
+            if( sessionId ) headers[ 'mcp-session-id' ] = sessionId
+
+            const resp = await fetch( url, { method: 'POST', headers: headers, body: JSON.stringify( body ) } )
+            const raw = await resp.text()
+            const ct = resp.headers.get( 'content-type' ) || ''
+
+            let data
+            if( ct.includes( 'text/event-stream' ) ) {
+                const lines = raw.split( '\n' ).filter( function( l ) { return l.startsWith( 'data: ' ) } ).map( function( l ) { return l.slice( 6 ) } )
+                data = lines.length > 0 ? JSON.parse( lines[ lines.length - 1 ] ) : {}
+            } else {
+                data = JSON.parse( raw )
+            }
+
+            return { data: data, sessionId: resp.headers.get( 'mcp-session-id' ) }
+        }
+
+        async function sendMessage() {
+            const query = inputEl.value.trim()
+            if( !query || isWorking ) return
+
+            if( welcomeEl ) welcomeEl.remove()
+            inputEl.value = ''
+
+            addMessage( query, 'user' )
+            setStatus( 'Connecting...', true )
+
+            const agent = agentSelect.value
+            const agentPath = agent === 'main' ? '/mcp/main' : agent === 'bahnhof' ? '/mcp/bahnhof' : '/mcp/tickets'
+            const toolName = agent === 'main' ? 'anschluss-mobility' : agent === 'bahnhof' ? 'bahnhofs-ueberleben' : 'ticketkauf'
+            const url = baseUrl + agentPath
+
+            try {
+                if( !sessionIds[ agent ] ) {
+                    const init = await mcpPost( url, { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'chat-ui', version: '1.0.0' } } } )
+                    sessionIds[ agent ] = init.sessionId
+                }
+
+                setStatus( 'Waiting for agent...', true )
+
+                const result = await mcpPost( url, { jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: { query: query } } }, sessionIds[ agent ] )
+
+                const content = result.data?.result?.content || []
+                const textContent = content.filter( function( c ) { return c.type === 'text' } ).map( function( c ) { return c.text } ).join( '\n' )
+
+                let answerText = textContent
+                let metadata = null
+                let toolCalls = []
+
+                try {
+                    const parsed = JSON.parse( textContent )
+                    answerText = parsed?.result?.text || parsed?.result?.analysis || textContent
+                    metadata = parsed?.metadata || parsed?.costs || null
+                    toolCalls = parsed?.costs?.breakdown || []
+                } catch( e ) {}
+
+                if( textContent.includes( '"code":402' ) || textContent.includes( 'credits' ) ) {
+                    addMessage( 'Credits aufgebraucht. Bitte OpenRouter Credits aufladen.', 'error' )
+                } else {
+                    addMessage( answerText, 'agent', metadata, toolCalls )
+                }
+
+                setStatus( 'Idle', false )
+            } catch( err ) {
+                addMessage( 'Fehler: ' + err.message, 'error' )
+                setStatus( 'Error', false )
+            }
+        }
+
+        function addMessage( text, type, metadata, toolCalls ) {
+            const div = document.createElement( 'div' )
+            div.className = 'message ' + type
+
+            if( type === 'agent' ) {
+                const html = typeof marked !== 'undefined' && marked.parse ? marked.parse( text ) : text.replace( /\n/g, '<br>' )
+                div.innerHTML = html
+
+                if( toolCalls && toolCalls.length > 0 ) {
+                    const badges = toolCalls.map( function( t ) { return '<span class="tool-badge">' + ( t.name || t.type || 'tool' ) + '</span>' } ).join( '' )
+                    div.innerHTML = badges + div.innerHTML
+                }
+
+                if( metadata ) {
+                    const rounds = metadata.llmRounds || '?'
+                    const tools = metadata.toolCalls || '?'
+                    const duration = metadata.duration ? Math.round( metadata.duration / 1000 ) + 's' : '?'
+                    const model = metadata.model || '?'
+                    div.innerHTML += '<div class="meta">' + rounds + ' Runden | ' + tools + ' Tools | ' + duration + ' | ' + model + '</div>'
+                }
+            } else if( type === 'error' ) {
+                div.textContent = text
+            } else {
+                div.textContent = text
+            }
+
+            messagesEl.appendChild( div )
+            messagesEl.scrollTop = messagesEl.scrollHeight
+        }
+
+        // --- Event Handlers ---
+        sendBtn.addEventListener( 'click', sendMessage )
+
+        inputEl.addEventListener( 'keydown', function( e ) {
+            if( e.key === 'Enter' && !e.shiftKey ) {
+                e.preventDefault()
+                sendMessage()
+            }
+        } )
+
+        inputEl.addEventListener( 'input', function() {
+            this.style.height = 'auto'
+            this.style.height = Math.min( this.scrollHeight, 120 ) + 'px'
+        } )
+
+        // --- Init ---
+        connectSSE()
+    </script>
+</body>
+</html>
