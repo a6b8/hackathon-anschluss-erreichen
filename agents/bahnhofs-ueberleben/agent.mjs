@@ -112,7 +112,7 @@ WICHTIG: Jede Information in deiner Antwort MUSS aus einem Tool-Aufruf stammen. 
             ]
         }
     ],
-    maxRounds: 8,
+    maxRounds: 5,
     maxTokens: 4096,
     inputSchema: {
         type: 'object',

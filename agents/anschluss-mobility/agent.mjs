@@ -126,7 +126,7 @@ Antworte immer auf Deutsch. Sei empathisch bei Stress-Situationen. Sei direkt un
             expectedContent: [ 'Radparken', 'ueberdacht' ]
         }
     ],
-    maxRounds: 8,
+    maxRounds: 5,
     maxTokens: 4096,
     inputSchema: {
         type: 'object',
