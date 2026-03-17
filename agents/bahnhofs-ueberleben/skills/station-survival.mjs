@@ -139,5 +139,25 @@ export const skill = {
         }
     ],
     output: 'Structured German-language report with 4 sections: Grundbeduerfnisse (toilet, warmth, drinks), Weiterreise (trains, buses, taxi), Uebernachtung (hotels if needed), Orientierung (city info, weather, tips). Only includes locations that are OPEN NOW.',
+    examples: [
+        {
+            input: { stationName: 'Marburg', situation: 'Zug ausgefallen, 22 Uhr' },
+            toolCalls: [
+                'search_nominatim({ q: "Bahnhof Marburg" })',
+                'find_station_amenities_overpassmobility({ lat: 50.82, lon: 8.77, radius: 300 })',
+                'get_departures_transportrestdb({ stopId: "8000337" })',
+                'find_accommodation_overpassmobility({ lat: 50.82, lon: 8.77, radius: 2000 })'
+            ],
+            expectedOutput: 'Report mit Cafes/Toiletten in 300m, naechste Zuege ab Marburg, Hotels in 2km'
+        },
+        {
+            input: { stationName: 'Potsdam', situation: 'Fahrrad abstellen' },
+            toolCalls: [
+                'search_nominatim({ q: "Bahnhof Potsdam" })',
+                'find_bike_infrastructure_overpassmobility({ lat: 52.39, lon: 13.07, radius: 500 })'
+            ],
+            expectedOutput: 'Fahrradparkplaetze mit Kapazitaet, Typ (Buegel/Boxen), ueberdacht ja/nein'
+        }
+    ],
     content
 }
