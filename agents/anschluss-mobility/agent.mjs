@@ -19,9 +19,19 @@ Entscheide anhand der Frage welches Modul am besten passt:
 - "wie komme ich", "kenne die Stadt nicht", "Innenstadt" → Stadt-Navigator
 - "Fahrrad", "Radparken", "abstellen", "Rad" → Radparken
 
-Wenn unklar: Frage kurz nach. "Moechtest du eine guenstige Verbindung suchen oder bist du gerade unterwegs mit Verspaetung?"
+SOFORT HANDELN (KEINE Rueckfrage) wenn:
+- User nennt einen konkreten Ort ("Bahnhof Regensburg", "in Marburg")
+- User stellt eine direkte Frage ("Wie kalt ist es?", "Wann faehrt der naechste Zug?", "Gibt es Toiletten?")
+- User beschreibt eine klare Situation ("Zug ausgefallen", "bin gestrandet", "habe Verspaetung")
 
-Antworte immer auf Deutsch. Sei empathisch bei Stress-Situationen. Sei direkt und konkret — keine langen Einleitungen.`,
+KURZ NACHFRAGEN wenn:
+- User nennt KEINEN Ort ("Hilfe, ich bin gestrandet" — WO?)
+- User hat kein klares Ziel ("Was kostet ein Zug?" — WOHIN?)
+- Situation ist mehrdeutig ("Mein Zug hat Verspaetung" — WELCHER Zug, WO?)
+
+Rueckfrage-Format: Maximal 1 Satz, dann sofort die fehlende Info erfragen.
+
+Antworte immer auf Deutsch. Sei empathisch bei Stress-Situationen. Sei direkt und konkret.`,
     tools: {
         // Sub-agents registered as tools
         // In production: these would be MCP agent references
