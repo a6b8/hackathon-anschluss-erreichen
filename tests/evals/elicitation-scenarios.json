@@ -1,0 +1,60 @@
+{
+    "scenarios": [
+        {
+            "id": "vague-stranded",
+            "query": "Hilfe, ich bin gestrandet",
+            "via": "main",
+            "expectElicitation": true,
+            "expectedQuestion": ["wo", "welch", "bahnhof", "stadt"]
+        },
+        {
+            "id": "vague-ticket",
+            "query": "Was kostet ein Zug?",
+            "via": "main",
+            "expectElicitation": true,
+            "expectedQuestion": ["wohin", "von", "nach", "wann"]
+        },
+        {
+            "id": "vague-delay",
+            "query": "Mein Zug hat Verspaetung",
+            "via": "main",
+            "expectElicitation": true,
+            "expectedQuestion": ["welch", "wo", "zug", "nummer"]
+        },
+        {
+            "id": "vague-general",
+            "query": "Ich brauche Hilfe am Bahnhof",
+            "via": "main",
+            "expectElicitation": true,
+            "expectedQuestion": ["welch", "was", "bahnhof"]
+        },
+        {
+            "id": "clear-stranded",
+            "query": "Es ist 23 Uhr, ich bin am Bahnhof Trier gestrandet, mein Zug nach Koeln ist ausgefallen",
+            "via": "main",
+            "expectElicitation": false,
+            "expectedAction": true
+        },
+        {
+            "id": "clear-weather",
+            "query": "Wie kalt ist es gerade am Bahnhof Regensburg?",
+            "via": "main",
+            "expectElicitation": false,
+            "expectedAction": true
+        },
+        {
+            "id": "ambiguous-short",
+            "query": "Zug verpasst",
+            "via": "main",
+            "expectElicitation": true,
+            "expectedQuestion": ["wo", "welch", "bahnhof"]
+        },
+        {
+            "id": "ambiguous-hotel",
+            "query": "Brauche Hotel",
+            "via": "main",
+            "expectElicitation": true,
+            "expectedQuestion": ["wo", "welch", "stadt", "naehe"]
+        }
+    ]
+}
