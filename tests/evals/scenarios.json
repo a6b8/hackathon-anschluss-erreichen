@@ -1,0 +1,164 @@
+{
+    "scenarios": [
+        {
+            "id": "stranded-bad-belzig",
+            "query": "Es ist 23 Uhr, ich bin in Bad Belzig gestrandet, mein Zug ist ausgefallen",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility", "find_accommodation_overpassmobility"],
+            "mustNotContain": ["Berlin Hauptbahnhof", "REWE to Go"],
+            "groundTruth": { "station": "Bad Belzig", "lat": 52.142, "lon": 12.588 }
+        },
+        {
+            "id": "missed-connection-goettingen",
+            "query": "Habe meinen Anschluss in Goettingen verpasst, naechster Zug nach Kassel?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "search_stations_transportrestdb"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Goettingen", "lat": 51.536, "lon": 9.926 }
+        },
+        {
+            "id": "accessible-toilets-jannowitzbruecke",
+            "query": "Gibt es barrierefreie Toiletten am Bahnhof Jannowitzbruecke?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accessibility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Jannowitzbruecke", "lat": 52.513, "lon": 13.418 }
+        },
+        {
+            "id": "weather-and-train-erfurt-weimar",
+            "query": "Wie ist das Wetter gerade in Erfurt und wann faehrt der naechste Zug nach Weimar?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "get_current_weather_brightsky", "search_stations_transportrestdb"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Erfurt", "lat": 50.972, "lon": 11.038 }
+        },
+        {
+            "id": "cheapest-rostock-stuttgart",
+            "query": "Guenstigster Weg von Rostock nach Stuttgart morgen?",
+            "via": "main",
+            "expectedTools": ["search_nominatim"],
+            "mustNotContain": [],
+            "groundTruth": { "from": "Rostock", "to": "Stuttgart" }
+        },
+        {
+            "id": "bike-parking-potsdam",
+            "query": "Wo kann ich mein Fahrrad sicher abstellen am Bahnhof Potsdam?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_bike_infrastructure_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Potsdam", "lat": 52.391, "lon": 13.067 }
+        },
+        {
+            "id": "stranded-wuerzburg-child",
+            "query": "Bin in Wuerzburg, Zug faellt aus, hab ein kleines Kind dabei. Wo finde ich warme Raeume und Essen?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Wuerzburg", "lat": 49.801, "lon": 9.936 }
+        },
+        {
+            "id": "local-transport-jena-west",
+            "query": "Naechster Bus oder Tram vom Bahnhof Jena West zur Uni?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_mobility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Jena West", "lat": 50.928, "lon": 11.577 }
+        },
+        {
+            "id": "lockers-freiburg",
+            "query": "Gibt es Schliessfaecher am Bahnhof Freiburg?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Freiburg", "lat": 47.997, "lon": 7.841 }
+        },
+        {
+            "id": "blind-tactile-hannover",
+            "query": "Ich bin blind und brauche taktile Leitsysteme am Hbf Hannover",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accessibility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Hannover", "lat": 52.377, "lon": 9.741 }
+        },
+        {
+            "id": "stranded-passau-night",
+            "query": "Mein Nachtzug ab Passau faellt aus, es ist 1 Uhr nachts. Wo kann ich schlafen?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accommodation_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Passau", "lat": 48.574, "lon": 13.460 }
+        },
+        {
+            "id": "weather-check-ulm",
+            "query": "Wie kalt ist es gerade in Ulm? Ich warte draussen auf meinen Zug",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "get_current_weather_brightsky"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Ulm", "lat": 48.399, "lon": 9.982 }
+        },
+        {
+            "id": "stranded-marburg-late",
+            "query": "Bin am Bahnhof Marburg gestrandet, 22 Uhr, wo finde ich was zu essen?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Marburg", "lat": 50.821, "lon": 8.773 }
+        },
+        {
+            "id": "mobility-options-konstanz",
+            "query": "Welche Mobilitaetsoptionen gibt es am Bahnhof Konstanz? Bus, Taxi, Fahrrad?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_mobility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Konstanz", "lat": 47.658, "lon": 9.177 }
+        },
+        {
+            "id": "wheelchair-access-darmstadt",
+            "query": "Ich sitze im Rollstuhl, gibt es am Bahnhof Darmstadt Aufzuege und barrierefreie Wege?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accessibility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Darmstadt", "lat": 49.871, "lon": 8.630 }
+        },
+        {
+            "id": "stranded-bamberg-rain",
+            "query": "Bin in Bamberg, es regnet stark, Zug verpasst. Wo kann ich mich unterstellen und aufwaermen?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "get_current_weather_brightsky", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Bamberg", "lat": 49.901, "lon": 10.899 }
+        },
+        {
+            "id": "hotel-near-aachen",
+            "query": "Brauche ein Hotel in der Naehe vom Aachener Hauptbahnhof fuer heute Nacht",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accommodation_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Aachen", "lat": 50.767, "lon": 6.091 }
+        },
+        {
+            "id": "amenities-osnabrueck",
+            "query": "Was gibt es am Bahnhof Osnabrueck? Cafe, Geldautomat, Apotheke?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Osnabrueck", "lat": 52.272, "lon": 8.061 }
+        },
+        {
+            "id": "bike-rental-muenster",
+            "query": "Gibt es Leihfahrraeder am Bahnhof Muenster?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_bike_infrastructure_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Muenster", "lat": 51.957, "lon": 7.635 }
+        },
+        {
+            "id": "stranded-trier-midnight",
+            "query": "Mitternacht in Trier, kein Zug mehr, brauche Schlafplatz und Toilette",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accommodation_overpassmobility", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Trier", "lat": 49.749, "lon": 6.687 }
+        }
+    ]
+}
