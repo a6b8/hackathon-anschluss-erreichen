@@ -95,6 +95,18 @@ const runScenario = async ( { scenario, runIndex } ) => {
 
         const answerText = parsedResult?.result?.text || parsedResult?.result?.analysis || textContent
 
+        const isCreditError = textContent.includes( '"code":402' ) || textContent.includes( 'requires more credits' )
+
+        if( isCreditError ) {
+            return {
+                scenarioId: scenario.id,
+                runIndex,
+                success: false,
+                totalTime,
+                error: 'credit_exhaustion'
+            }
+        }
+
         const mustNotContainViolations = scenario.mustNotContain
             .filter( ( term ) => answerText.includes( term ) )
 
@@ -125,6 +137,14 @@ const runScenario = async ( { scenario, runIndex } ) => {
 }
 
 
+const normalizeUmlauts = ( text ) => {
+    return text
+        .replace( /ae/g, 'a' ).replace( /oe/g, 'o' ).replace( /ue/g, 'u' )
+        .replace( /ä/g, 'a' ).replace( /ö/g, 'o' ).replace( /ü/g, 'u' )
+        .replace( /ß/g, 'ss' )
+}
+
+
 const checkGroundTruth = ( { answerText, groundTruth } ) => {
     if( !groundTruth ) {
         return { checked: false }
@@ -132,9 +152,12 @@ const checkGroundTruth = ( { answerText, groundTruth } ) => {
 
     const checks = {}
     const lower = answerText.toLowerCase()
+    const normalized = normalizeUmlauts( lower )
 
     if( groundTruth.station ) {
-        checks.stationMentioned = lower.includes( groundTruth.station.toLowerCase() )
+        const stationLower = groundTruth.station.toLowerCase()
+        const stationNorm = normalizeUmlauts( stationLower )
+        checks.stationMentioned = lower.includes( stationLower ) || normalized.includes( stationNorm )
     }
 
     if( groundTruth.lat && groundTruth.lon ) {
