@@ -159,6 +159,102 @@
             "expectedTools": ["search_nominatim", "find_accommodation_overpassmobility", "find_station_amenities_overpassmobility"],
             "mustNotContain": [],
             "groundTruth": { "station": "Trier", "lat": 49.749, "lon": 6.687 }
+        },
+        {
+            "id": "routine-departures-nuernberg",
+            "query": "Wann faehrt der naechste Zug von Nuernberg Hbf nach Muenchen?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "get_departures_transportrestdb"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Nuernberg", "lat": 49.446, "lon": 11.082 }
+        },
+        {
+            "id": "routine-weather-leipzig",
+            "query": "Wie ist das Wetter gerade am Bahnhof Leipzig?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "get_current_weather_brightsky"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Leipzig", "lat": 51.345, "lon": 12.382 }
+        },
+        {
+            "id": "routine-nearby-dresden",
+            "query": "Was gibt es in der Naehe vom Dresdner Hauptbahnhof? Cafe, Geldautomat?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Dresden", "lat": 51.040, "lon": 13.732 }
+        },
+        {
+            "id": "routine-hotel-kassel",
+            "query": "Ich brauche ein Hotel in der Naehe vom Kasseler Hauptbahnhof",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accommodation_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Kassel", "lat": 51.318, "lon": 9.490 }
+        },
+        {
+            "id": "routine-connection-augsburg",
+            "query": "Naechste Verbindung von Augsburg nach Stuttgart?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "search_stations_transportrestdb"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Augsburg", "lat": 48.365, "lon": 10.886 }
+        },
+        {
+            "id": "routine-taxi-braunschweig",
+            "query": "Gibt es einen Taxistand am Bahnhof Braunschweig?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_mobility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Braunschweig", "lat": 52.252, "lon": 10.541 }
+        },
+        {
+            "id": "routine-toilet-kiel",
+            "query": "Wo ist die naechste Toilette am Kieler Hauptbahnhof?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Kiel", "lat": 54.315, "lon": 10.132 }
+        },
+        {
+            "id": "routine-bike-heidelberg",
+            "query": "Kann ich mein Fahrrad am Bahnhof Heidelberg abstellen?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_bike_infrastructure_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Heidelberg", "lat": 49.404, "lon": 8.675 }
+        },
+        {
+            "id": "routine-pharmacy-mainz",
+            "query": "Gibt es eine Apotheke am Bahnhof Mainz?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_station_amenities_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Mainz", "lat": 50.001, "lon": 8.259 }
+        },
+        {
+            "id": "routine-elevator-bonn",
+            "query": "Hat der Bonner Hauptbahnhof Aufzuege?",
+            "via": "bahnhof",
+            "expectedTools": ["search_nominatim", "find_accessibility_overpassmobility"],
+            "mustNotContain": [],
+            "groundTruth": { "station": "Bonn", "lat": 50.732, "lon": 7.097 }
+        },
+        {
+            "id": "edge-two-cities",
+            "query": "Ich bin in Wuppertal und muss nach Essen, es ist 22 Uhr",
+            "via": "main",
+            "expectedTools": ["search_nominatim"],
+            "mustNotContain": [],
+            "groundTruth": { "from": "Wuppertal", "to": "Essen" }
+        },
+        {
+            "id": "edge-family-travel",
+            "query": "Wir reisen mit Kinderwagen von Luebeck nach Hamburg, was muss ich wissen?",
+            "via": "main",
+            "expectedTools": ["search_nominatim"],
+            "mustNotContain": [],
+            "groundTruth": { "from": "Luebeck", "to": "Hamburg" }
         }
     ]
 }

@@ -62,10 +62,13 @@ const detectElicitation = ( { answerText } ) => {
         .filter( ( w ) => lower.includes( w ) )
         .length
 
-    const hasQuestion = questionMarks >= 1 && questionWordCount >= 1
-    const isMainlyQuestion = questionMarks >= 2 || ( answerText.length < 500 && questionMarks >= 1 )
+    const lastThreeSentences = answerText.split( /[.!]\s/ ).slice( -3 ).join( ' ' )
+    const lastHasQuestion = ( lastThreeSentences.match( /\?/g ) || [] ).length >= 1
 
-    return { hasQuestion, isMainlyQuestion, questionMarks, questionWordCount }
+    const hasQuestion = ( questionMarks >= 1 && questionWordCount >= 1 ) || lastHasQuestion
+    const isMainlyQuestion = questionMarks >= 2 || ( answerText.length < 500 && questionMarks >= 1 ) || lastHasQuestion
+
+    return { hasQuestion, isMainlyQuestion, questionMarks, questionWordCount, lastHasQuestion }
 }
 
 
