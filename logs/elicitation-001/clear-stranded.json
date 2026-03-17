@@ -1,0 +1,15 @@
+{
+  "id": "clear-stranded",
+  "query": "Es ist 23 Uhr, ich bin am Bahnhof Trier gestrandet, mein Zug nach Koeln ist ausgefallen",
+  "expectedElicitation": false,
+  "gotElicitation": false,
+  "match": true,
+  "elicitation": {
+    "hasQuestion": false,
+    "isMainlyQuestion": false,
+    "questionMarks": 0,
+    "questionWordCount": 0
+  },
+  "answerPreview": "Der Reisende ist um 23 Uhr am Bahnhof Trier gestrandet, da der Zug nach Köln ausgefallen ist. Dies ist eine klassische Notsituation, die eine mehrstufige Lösung erfordert.\n\n**Unmittelbare Situation:**\nUm 23 Uhr sind die Reiseoptionen stark eingeschränkt. Die reguläre Verbindung Trier-Köln wird hauptsächlich über die Moselstrecke via Koblenz bedient. Zu dieser späten Stunde gibt es in der Regel keine Direktverbindungen mehr.\n\n**Fahrgastrechte:**\nBei Zugausfall und fehlender Alternativverbindung h",
+  "totalTime": 4
+}

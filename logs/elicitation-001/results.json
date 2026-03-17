@@ -1,0 +1,127 @@
+{
+  "accuracy": 88,
+  "correct": 7,
+  "total": 8,
+  "results": [
+    {
+      "id": "vague-stranded",
+      "query": "Hilfe, ich bin gestrandet",
+      "expectedElicitation": true,
+      "gotElicitation": true,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 6,
+        "questionWordCount": 3
+      },
+      "answerPreview": "Ich helfe dir sofort! Um dir am besten zu helfen, brauche ich ein paar Infos:\n\n- **Wo bist du gerade?** (Welcher Bahnhof?)\n- **Was ist passiert?** (Zug ausgefallen, verpasst, Verspätung?)\n- **Was brauchst du jetzt?** (Toilette, warmer Ort, Essen/Trinken, Übernachtung, nächste Verbindung?)\n\nJe mehr du mir sagst, desto besser kann ich dir helfen!",
+      "totalTime": 7
+    },
+    {
+      "id": "vague-ticket",
+      "query": "Was kostet ein Zug?",
+      "expectedElicitation": true,
+      "gotElicitation": true,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 4,
+        "questionWordCount": 4
+      },
+      "answerPreview": "Ich verstehe, dass du wissen möchtest, was ein Zugticket kostet! \n\nUm dir konkrete Preise zu nennen, brauche ich noch ein paar Infos:\n\n- **Von wo nach wo** möchtest du fahren?\n- **Wann** möchtest du reisen? (Datum/Zeitraum)\n- Hast du Präferenzen? (z.B. möglichst günstig, Direktverbindung, flexibel bei der Uhrzeit?)\n\nMit diesen Angaben kann ich für dich Sparpreise der Bahn und günstige Alternativen wie FlixBus oder FlixTrain vergleichen! 🚂",
+      "totalTime": 8
+    },
+    {
+      "id": "vague-delay",
+      "query": "Mein Zug hat Verspaetung",
+      "expectedElicitation": true,
+      "gotElicitation": true,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 6,
+        "questionWordCount": 4
+      },
+      "answerPreview": "Ich helfe dir gerne! Um deine Situation besser einschätzen zu können, brauche ich ein paar Infos:\n\n- **Wo bist du gerade?** (Welcher Bahnhof / welcher Zug?)\n- **Wohin willst du?**\n- **Wie viel Verspätung hat dein Zug?**\n- **Hast du einen Anschluss, den du erreichen musst?**\n\nOder bist du bereits gestrandet und brauchst Hilfe vor Ort (Toilette, Warteraum, Hotel)?",
+      "totalTime": 6
+    },
+    {
+      "id": "vague-general",
+      "query": "Ich brauche Hilfe am Bahnhof",
+      "expectedElicitation": true,
+      "gotElicitation": true,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 6,
+        "questionWordCount": 3
+      },
+      "answerPreview": "Ich helfe dir gerne! Um dir optimal helfen zu können, brauche ich ein bisschen mehr Information:\n\n- **Wo bist du gerade?** (An welchem Bahnhof?)\n- **Was ist passiert?** (Zug ausgefallen, Verspätung, gestrandet?)\n- **Was brauchst du konkret?** (Toilette, Warteraum, etwas zu essen/trinken, Übernachtung, nächste Verbindung?)\n\nJe genauer du mir deine Situation beschreibst, desto besser kann ich dir helfen!",
+      "totalTime": 6
+    },
+    {
+      "id": "clear-stranded",
+      "query": "Es ist 23 Uhr, ich bin am Bahnhof Trier gestrandet, mein Zug nach Koeln ist ausgefallen",
+      "expectedElicitation": false,
+      "gotElicitation": false,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": false,
+        "isMainlyQuestion": false,
+        "questionMarks": 0,
+        "questionWordCount": 0
+      },
+      "answerPreview": "Der Reisende ist um 23 Uhr am Bahnhof Trier gestrandet, da der Zug nach Köln ausgefallen ist. Dies ist eine klassische Notsituation, die eine mehrstufige Lösung erfordert.\n\n**Unmittelbare Situation:**\nUm 23 Uhr sind die Reiseoptionen stark eingeschränkt. Die reguläre Verbindung Trier-Köln wird hauptsächlich über die Moselstrecke via Koblenz bedient. Zu dieser späten Stunde gibt es in der Regel keine Direktverbindungen mehr.\n\n**Fahrgastrechte:**\nBei Zugausfall und fehlender Alternativverbindung h",
+      "totalTime": 4
+    },
+    {
+      "id": "clear-weather",
+      "query": "Wie kalt ist es gerade am Bahnhof Regensburg?",
+      "expectedElicitation": false,
+      "gotElicitation": true,
+      "match": false,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 2,
+        "questionWordCount": 2
+      },
+      "answerPreview": "Ich verstehe, dass du wissen möchtest, wie kalt es aktuell am Bahnhof Regensburg ist. \n\nLeider habe ich keinen direkten Zugriff auf aktuelle Wetterdaten oder Temperaturen. Meine spezialisierten Module sind auf Reisesituationen ausgerichtet:\n\n- **Bahnhofs-Überleben** kann dir helfen, wenn du dort gestrandet bist und warme Räume, offene Cafés oder Unterkünfte brauchst\n- **Ticketkauf** berücksichtigt Wetter bei der Reiseplanung zum Zielort\n- Andere Module für Anschlüsse, Orientierung und Radparken\n",
+      "totalTime": 5
+    },
+    {
+      "id": "ambiguous-short",
+      "query": "Zug verpasst",
+      "expectedElicitation": true,
+      "gotElicitation": true,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 7,
+        "questionWordCount": 6
+      },
+      "answerPreview": "Verstehe – du hast deinen Zug verpasst. Um dir am besten helfen zu können, brauche ich noch ein paar Infos:\n\n1. **Wo bist du gerade?** (Welcher Bahnhof?)\n2. **Wohin wolltest du?** (Ziel)\n3. **Welches Ticket hast du?** (Flexpreis, Sparpreis, Nahverkehr?)\n4. **Wie spät ist es ungefähr / wann fährst du normalerweise?**\n\nJe nachdem kann ich dir helfen:\n- **Nächste Verbindung finden** (wenn dein Ticket flexibel ist)\n- **Notfall-Hilfe** (wenn es spät ist und keine Züge mehr fahren – Hotel, Warteraum)\n",
+      "totalTime": 7
+    },
+    {
+      "id": "ambiguous-hotel",
+      "query": "Brauche Hotel",
+      "expectedElicitation": true,
+      "gotElicitation": true,
+      "match": true,
+      "elicitation": {
+        "hasQuestion": true,
+        "isMainlyQuestion": true,
+        "questionMarks": 8,
+        "questionWordCount": 5
+      },
+      "answerPreview": "Ich verstehe, du brauchst ein Hotel. Um dir am besten helfen zu können, brauche ich noch ein paar Infos:\n\n- **Wo bist du gerade?** (An welchem Bahnhof?)\n- **Was ist passiert?** (Zug ausgefallen? Anschluss verpasst? Oder planst du eine Übernachtung?)\n- **Wann brauchst du das Hotel?** (Heute Nacht / später?)\n\nDamit kann ich dir konkret Hotels in Bahnhofsnähe finden und dir sagen, wie du hinkommst.",
+      "totalTime": 7
+    }
+  ]
+}

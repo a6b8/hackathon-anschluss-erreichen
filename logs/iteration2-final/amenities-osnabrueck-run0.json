@@ -1,0 +1,24 @@
+{
+  "scenarioId": "amenities-osnabrueck",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 12492,
+  "initTime": 5,
+  "callTime": 11,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Bahnhof Osnabrück verfügt über umfangreiche Grundausstattung für Reisende [1]. Es gibt zwei Cafés in unmittelbarer Nähe: das Frühstückstraum und das Garbo Kinocafé mit Außensitzplätzen [1]. Für Geldtransaktionen stehen mindestens zwei ATM-Stationen zur Verfügung - ein ING DiBa Automat und die Oldenburgische Landesbank im CashPool-Netz [1]. Die Dom-Apotheke in der Hasestraße hat reguläre Öffnungszeiten (Mo-Fr 08:30-18:30, Sa 08:30-14:00) [1]. Zusätzlich sind 24/7 Toiletten am Bahnhof erreichbar [1].",
+  "answerLength": 507,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 3,
+    "llmRounds": 2,
+    "duration": 12474
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

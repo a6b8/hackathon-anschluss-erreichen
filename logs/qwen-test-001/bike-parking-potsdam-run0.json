@@ -1,0 +1,19 @@
+{
+  "scenarioId": "bike-parking-potsdam",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 92,
+  "initTime": 7,
+  "callTime": 18,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "{\n  \"status\": \"error\",\n  \"error\": \"404 {\\\"error\\\":{\\\"message\\\":\\\"No allowed providers are available for the selected model.\\\",\\\"code\\\":404,\\\"metadata\\\":{\\\"available_providers\\\":[\\\"venice\\\"],\\\"requested_providers\\\":[\\\"anthropic\\\"]}}}\"\n}",
+  "answerLength": 235,
+  "metadata": {},
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": false,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

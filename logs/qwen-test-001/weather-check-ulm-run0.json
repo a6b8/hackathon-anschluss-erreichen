@@ -1,0 +1,19 @@
+{
+  "scenarioId": "weather-check-ulm",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 78,
+  "initTime": 12,
+  "callTime": 13,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "{\n  \"status\": \"error\",\n  \"error\": \"404 {\\\"error\\\":{\\\"message\\\":\\\"No allowed providers are available for the selected model.\\\",\\\"code\\\":404,\\\"metadata\\\":{\\\"available_providers\\\":[\\\"venice\\\"],\\\"requested_providers\\\":[\\\"anthropic\\\"]}}}\"\n}",
+  "answerLength": 235,
+  "metadata": {},
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": false,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

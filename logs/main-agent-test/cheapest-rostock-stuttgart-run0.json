@@ -1,0 +1,24 @@
+{
+  "scenarioId": "cheapest-rostock-stuttgart",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 86061,
+  "initTime": 7,
+  "callTime": 5,
+  "toolName": "anschluss-mobility",
+  "answerText": "Für die Strecke Rostock nach Stuttgart morgen gibt es mehrere Optionen, die je nach Priorität (Preis vs. Zeit) unterschiedlich attraktiv sind.\n\n**Deutsche Bahn Sparpreis:**\nDie Standardoption für günstige Bahnreisen in Deutschland. Sparpreise beginnen typischerweise ab 19,90€ für diese Langstrecke, sind jedoch zuggebunden und erfordern frühzeitige Buchung. Die Verbindung erfolgt meist mit 1x Umsteigen in Berlin oder Hamburg mit ICE-Zügen. Fahrtzeit ca. 7-9 Stunden.\n\n**FlixBus/FlixTrain:**\nAlternative Fernverkehrsanbieter bieten oft Tickets zwischen 9,99€ und 29,99€ an. Die Reisezeit ist mit 12-15 Stunden deutlich länger, aber die Tickets sind flexibler stornierbar und oft günstiger als die Bahn.\n\n**Optimierungsstrategie:**\n- Frühe Buchung am Tag sichert niedrigere Sparpreise\n- Unattraktive Reisezeiten (sehr früh morgens, nachts) sind günstiger\n- Direkter Preisvergleich zwischen bahn.de und flixbus.de empfohlen\n\nHinweis: Die automatische Preisabfrage konnte aufgrund eines technischen Timeouts nicht durchgeführt werden [1], daher basieren diese Angaben auf typischen Preisspannen für diese Strecke.",
+  "answerLength": 1112,
+  "metadata": {
+    "model": "anthropic/claude-sonnet-4-5-20250929",
+    "toolCalls": 1,
+    "llmRounds": 3,
+    "duration": 86039
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "fromMentioned": true,
+    "toMentioned": true
+  },
+  "error": null
+}

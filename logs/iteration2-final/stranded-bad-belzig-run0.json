@@ -1,0 +1,24 @@
+{
+  "scenarioId": "stranded-bad-belzig",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 21111,
+  "initTime": 176,
+  "callTime": 45,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Reisender ist um 23 Uhr in Bad Belzig gestranded nach Zugausffall. Die Situation ist aber nicht kritisch: [1] Das Wetter ist kalt (5,8°C) aber trocken, was überschaubar ist. [2] Es fahren noch mehrere Züge heute Abend - insbesondere die RE 7 um 19:45 Uhr mit 4 Min. Verspätung nach Berlin Ostbahnhof und um 20:19 Uhr nach Dessau Hbf pünktlich. Diese Verbindungen sind realistisch erreichbar. [3] Falls eine Übernachtung nötig wird, steht das Hotel Burg Eisenhardt nur 500m vom Bahnhof entfernt zur Verfügung (Straße der Einheit 41). Die Grundversorgung (Toiletten, Wärme) sollte am Bahnhof verfügbar sein.",
+  "answerLength": 605,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 8,
+    "llmRounds": 3,
+    "duration": 20885
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

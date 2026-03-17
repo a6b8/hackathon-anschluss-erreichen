@@ -1,0 +1,24 @@
+{
+  "scenarioId": "local-transport-jena-west",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 31254,
+  "initTime": 6,
+  "callTime": 7,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Nutzer fragte nach den nächsten Bus- oder Tramverbindungen vom Bahnhof Jena West zur Friedrich-Schiller-Universität Jena. Durch die Abfrage der Echtzeit-Abfahrtsdaten der Station Jena West (IBNR: 8011957) wurden mehrere unmittelbar verfügbare Busverbindungen identifiziert [1].\n\n**Aktuelle Abfahrten (Stand 17.03.2026, ca. 19:30 Uhr) [1]:**\n\nDie nächsten verfügbaren Verbindungen sind Buslinien, die vom Bahnhof in Richtung Stadtzentrum und Campus fahren:\n\n1. **Bus 10** - Abfahrt 19:31 Uhr von Westbahnhofstraße, Richtung Stadtzentrum Teichgraben/Burgaupark (Gleis 1-2) [1]\n2. **Bus 11** - Abfahrt 19:38 Uhr von Westbahnhofstraße, Richtung Ammerbach (Gleis 2) [1]\n3. **Bus 410** - Abfahrt 19:30-19:31 Uhr von Westbahnhof, Richtung Busbahnhof Eisenberg (Gleis 1-2) [1]\n\n**Standort der Haltestellen [2]:**\nDie Busse fahren von der Haltestelle „Westbahnhofstraße, Jena\" (50.924628°N, 11.578439°E) oder direkt vom Westbahnhof ab, die sich unmittelbar beim Bahnhof Jena West (50.923286°N, 11.577848°E) befinden – ca. 100 Meter Fußweg [2].\n\n**Empfehlung für die Uni:**\nBus 10 oder Bus 11 sind die geeignetsten Optionen, da diese in Richtung Stadtzentrum und Campus fahren, wo sich die Universitätsgebäude befinden. Die Bus-Linien gehören zum städtischen Nahverkehrssystem Jenas und verbinden den Bahnhof direkt mit dem Universitätsbereich.",
+  "answerLength": 1338,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 5,
+    "llmRounds": 4,
+    "duration": 31238
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

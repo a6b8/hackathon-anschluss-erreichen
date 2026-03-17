@@ -1,0 +1,24 @@
+{
+  "scenarioId": "bike-parking-potsdam",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 69933,
+  "initTime": 7,
+  "callTime": 9,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "## 🌤️ Aktuelle Lage am Potsdam Hauptbahnhof\n\n**Wetter:** Klarer Tag, 11°C, trockene Bedingungen mit leichtem Wind aus Südost [1]. Gute Bedingungen zum Fahrradparken.\n\n---\n\n## 🚲 Sichere Fahrrad-Abstellmöglichkeiten\n\n### **TOP-EMPFEHLUNG: Radstation (überdacht & bewacht)**\n\nDie **Radstation** direkt am Bahnhof ist Ihre beste Option für sicheres Abstellen [2]:\n- **Lage:** Babelsberger Straße, Nordseite des Hauptbahnhofs (ca. 140m vom Bahnhofseingang)\n- **Kapazität:** 550 Stellplätze in sicheren Schließfächern\n- **Besonderheit:** Überdacht, beleuchtet, 24/7 geöffnet, bewacht\n- **Cargo-Bikes:** Spezielle Stellplätze für Lastenräder vorhanden\n- **Zugang:** Nur per App-Zahlung (Android: \"de.infravelo.parkyourbike\", iOS App-ID: 1658747626)\n- **Betreiber:** Bahnland GmbH\n- **Gebühr:** Kostenpflichtig\n\n### **Kostenlose überdachte Option:**\n\n**Fahrradparkplatz mit Dach** [2]:\n- **Lage:** Ca. 100m südlich vom Haupteingang\n- **Kapazität:** 30 Stellplätze mit Fahrradbügeln\n- **Vorteil:** Überdacht und kostenlos\n- **Koordinaten:** 52.3908°N, 13.0652°E\n\n### **Weitere kostenlose Stellplätze (nicht überdacht):**\n\nAm Bahnhof verteilt gibt es zahlreiche kostenlose Fahrradbügel [2]:\n- **Nordseite (Babelsberger Straße):** Mehrere Bereiche mit 4-26 Stellplätzen\n- **Auf Level 1 (Hochebene):** 12 überdachte + 6 nicht überdachte Plätze\n- **Verschiedene kleinere Standorte:** Kapazitäten zwischen 4-16 Rädern\n\n### **Bike-Sharing Stationen (PotsdamRad/Nextbike):**\n\nFalls Sie Ihr Rad auch zurückgeben möchten [2]:\n- **Hauptbahnhof Nord:** 14 Stellplätze (Ref: 5211)\n- **Hauptbahnhof Süd / Taxistand:** 12 Stellplätze (Ref: 5217)\n- Betreiber: Nextbike, Kontakt: +49 30 692 05046\n\n---\n\n## 🔧 Service-Angebote vor Ort\n\n**Fahrradreparatur-Station** [2]:\n- **Lage:** Ca. 130m südwestlich vom Bahnhof\n- **Ausstattung:** Luftpumpe & Werkzeug (kostenlos, 24/7)\n- **Betreiber:** Stadtwerke Potsdam\n- **Marke:** ibomba (blaue Farbe)\n\n**Fahrradläden mit Reparatur-Service:**\n1. **Pedales** [2] – Babelsberger Straße",
+  "answerLength": 2928,
+  "metadata": {
+    "model": "anthropic/claude-sonnet-4-5-20250929",
+    "toolCalls": 7,
+    "llmRounds": 5,
+    "duration": 69911
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

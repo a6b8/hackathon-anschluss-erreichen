@@ -1,0 +1,24 @@
+{
+  "scenarioId": "wheelchair-access-darmstadt",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 67826,
+  "initTime": 6,
+  "callTime": 14,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Am Bahnhof Darmstadt Hbf herrschen aktuell milde Bedingungen mit 11,8°C und bedecktem Himmel, aber trockenem Wetter [1]. Der Bahnhof ist ein wichtiger Verkehrsknotenpunkt der Preisklasse 2 mit ICE-, IC-, Regional- und S-Bahn-Verbindungen sowie Bus- und Straßenbahnanschlüssen [2].\n\nLeider konnten die spezifischen Barrierefreiheits-Daten (Aufzüge, taktiles Leitsystem, rollstuhlgerechte Eingänge) aufgrund eines Server-Timeouts nicht abgerufen werden. Für aktuelle Informationen zum Aufzugsstatus wird empfohlen, die DB Mobilitätsservice-Zentrale unter 030 65 21 28 88 (täglich 6-22 Uhr) zu kontaktieren oder die Mobilitätsservice-App zu nutzen.\n\nDie nächsten Verbindungen ab Darmstadt Hbf sind: RB75 nach Mainz-Bischofsheim um 17:12 Uhr von Gleis 8, Bus AIR zum Flughafen Frankfurt um 17:18 Uhr (3 Min Verspätung), und ICE 679 nach Köln um 17:20 Uhr von Gleis 6 [3].",
+  "answerLength": 867,
+  "metadata": {
+    "model": "anthropic/claude-sonnet-4-5-20250929",
+    "toolCalls": 8,
+    "llmRounds": 5,
+    "duration": 67801
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

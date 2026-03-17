@@ -1,0 +1,19 @@
+{
+  "scenarioId": "hotel-near-aachen",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 16752,
+  "initTime": 6,
+  "callTime": 12,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "{\n  \"status\": \"error\",\n  \"error\": \"402 {\\\"error\\\":{\\\"message\\\":\\\"This request requires more credits, or fewer max_tokens. You requested up to 4096 tokens, but can only afford 1625. To increase, visit https://openrouter.ai/settings/credits and add more credits\\\",\\\"code\\\":402,\\\"metadata\\\":{\\\"provider_name\\\":null}},\\\"user_id\\\":\\\"user_32zWTdOmWt3Knq84y06VVsGlXgT\\\"}\"\n}",
+  "answerLength": 366,
+  "metadata": {},
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": false,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

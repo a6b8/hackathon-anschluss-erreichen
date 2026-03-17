@@ -1,0 +1,24 @@
+{
+  "scenarioId": "missed-connection-goettingen",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 22016,
+  "initTime": 10,
+  "callTime": 17,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der gestrandete Reisende in Göttingen hat mehrere unmittelbare Optionen zur Weiterfahrt nach Kassel [1]. Die aktuellen Echtzeit-Abfahrten zeigen, dass der **ICE 775 um 19:27 Uhr von Gleis 10** die nächste verfügbare Verbindung ist [1]. Dieser Zug fährt in Richtung Stuttgart Hbf und hält unterwegs in Kassel-Wilhelmshöhe, einer der Hauptbahnhöfe in Kassel [1][2].\n\nNach dem verpassten Anschluss sollte der Reisende sich sofort zum Gleis 10 begeben [1]. Die Fahrkarte muss entweder neu gekauft oder validiert werden. Sollte der ICE 775 verpasst werden, folgen weitere Regional- und Express-Verbindungen in den nächsten 30-60 Minuten [1].\n\nDie Stationen wurden identifiziert: Göttingen (51.53676°N, 9.926257°E) und Kassel mit den Haltepunkten Kassel Hbf, Kassel-Wilhelmshöhe und Kassel Messe [2].",
+  "answerLength": 794,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 5,
+    "llmRounds": 4,
+    "duration": 21987
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

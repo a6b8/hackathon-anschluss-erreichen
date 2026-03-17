@@ -1,0 +1,122 @@
+[
+  {
+    "scenarioId": "stranded-bad-belzig",
+    "runIndex": 0,
+    "success": true,
+    "totalTime": 34322,
+    "initTime": 119,
+    "callTime": 38,
+    "toolName": "bahnhofs-ueberleben",
+    "answerText": "Der Reisende ist um 23 Uhr in Bad Belzig gestrandet, nachdem sein Zug ausfiel [1]. Bad Belzig ist eine kleine Regionalbahnstation in Potsdam-Mittelmark, Brandenburg [2] mit nur Regional- und Busverbindungen — keine Fernzüge [3]. \\n\\nDie aktuelle Wetterlage zeigt 6,6°C, klaren Himmel und keine Niederschläge, aber moderate Windböen bis 18,7 km/h [4]. Es ist kühl, aber kein Notfall-Wetter.\\n\\nDas kritische Problem: Nach 23 Uhr fahren an dieser kleinen Station definitiv keine Züge mehr [5]. Der letzte Regionalzug ist bereits gegangen. Die Zugabfahrts-Systeme sind überlastet und zeigen den Fehler direkt.\\n\\nSOFORTMASSNAHMEN:\\n1. Die Station hat einen aktiven Taxistand [3]\\n2. Reisender sollte SOFORT ein Taxi nehmen zum nächsten Hotel\\n3. Die Bahn ist VERPFLICHTET, die Unterkunft zu zahlen bei Zugausfällen — Hotline: 0900 1 50 05 96 [6]\\n4. Morgen fahren erste Züge ca. 5-6 Uhr wieder\\n\\nBad Belzig ist eine kleine Stadt — der Taxi-Fahrer wird beste Hotel-Optionen kennen. Mit Bahn-Entschädigung wird die Nacht kostenfrei [6].",
+    "answerLength": 1032,
+    "metadata": {
+      "model": "anthropic/claude-haiku-4.5",
+      "toolCalls": 9,
+      "llmRounds": 4,
+      "duration": 34153
+    },
+    "mustNotContainViolations": [],
+    "groundTruthCheck": {
+      "checked": true,
+      "stationMentioned": true,
+      "coordinatesUsed": false
+    },
+    "error": null
+  },
+  {
+    "scenarioId": "bike-parking-potsdam",
+    "runIndex": 0,
+    "success": true,
+    "totalTime": 29175,
+    "initTime": 12,
+    "callTime": 17,
+    "toolName": "bahnhofs-ueberleben",
+    "answerText": "Am Potsdam Hauptbahnhof stehen dem Reisenden mehrere sichere Optionen zur Verfügung, sein Fahrrad abzustellen [1]. \n\nDie **beste Option für maximale Sicherheit** ist die **Radstation** (ID: 3871219654) auf der Babelsberger Straße [1]. Sie bietet 550 Fahrradplätze in überdachten Lockern, ist 24/7 geöffnet, überwacht und beleuchtet. Die Bezahlung erfolgt ausschließlich per App (Parkwheel-App für Android und iOS), wird von der Bahnland GmbH betrieben und eignet sich auch für Lastenräder [1].\n\nEine Alternative **mit persönlicher Beratung** ist **Pedales** (ID: 5460616279), ein Fahrradladen auf der Babelsberger Straße 16 [1]. Dieser bietet nicht nur Parkplätze, sondern auch Reparaturservices, Vermietung, Ersatzteile und weitere Fahrrad-Services. Die Öffnungszeiten sind Mo-Fr 7:00-19:00, Sa 9:30-19:00 und So 9:30-18:00. Der Betreiber ist erreichbar unter +49 331 887 19917 [1].\n\nFür Budget-bewusste Nutzer gibt es mehrere **kostenlose Parkoptionen**: Ein überdachter Ständer mit 30 Plätzen (ID: 3246099583) bietet Schutz vor Wetter, während mehrere offene Ständer mit je 30 Plätzen verteilt rund um den Bahnhof kostenfrei zur Verfügung stehen (IDs: 6788671758, 3624041893, 3624035992) [1]. Diese sind beleuchtet und gut zugänglich.\n\nZusätzlich existiert die **Fahrrad-Vermietstation PotsdamRad** (ID: 1695098954) direkt am Hauptbahnhof Süd beim Taxistand mit 12 Leihrädern, betrieben von Nextbike für Nutzer ohne eigenes Fahrrad [1].\n\nAlle Parkplätze liegen unmittelbar am oder im nächsten Umfeld des Potsdam Hauptbahnhofs (52.391509, 13.0667031) [2], sodass der Fußweg minimal ist.",
+    "answerLength": 1588,
+    "metadata": {
+      "model": "anthropic/claude-haiku-4.5",
+      "toolCalls": 3,
+      "llmRounds": 3,
+      "duration": 29144
+    },
+    "mustNotContainViolations": [],
+    "groundTruthCheck": {
+      "checked": true,
+      "stationMentioned": true,
+      "coordinatesUsed": true
+    },
+    "error": null
+  },
+  {
+    "scenarioId": "lockers-freiburg",
+    "runIndex": 0,
+    "success": true,
+    "totalTime": 18224,
+    "initTime": 9,
+    "callTime": 8,
+    "toolName": "bahnhofs-ueberleben",
+    "answerText": "Der Nutzer hat nach der Verfügbarkeit von Schliessfächern am Bahnhof Freiburg gefragt. Die Recherche ergab folgende Erkenntnisse:\n\nDer **Bahnhof Freiburg (Breisgau) Hbf** wurde erfolgreich identifiziert [1]. Es ist ein großer Hauptbahnhof mit umfangreichen Verkehrsanbindungen (ICE, IC, RegionalExpress, S-Bahn, Bus, Tram) [2]. \n\nDie spezialisierten Datenbanken für Bahnhofseinrichtungen enthalten jedoch keine detaillierten Informationen zu Schliessfächern [3]. Diese Information ist nicht in den Overpass-Mobility oder Transport-Rest-DB Datenquellen verfügbar, da die APIs sich auf Mobilitätsoptionen, Amenities wie Toiletten und Gastronomie, sowie Zugverbindungen konzentrieren.\n\n**Konkrete Lösung für den Nutzer:**\n- Informationsschalter vor Ort im Hbf Freiburg konsultieren\n- Deutsche Bahn Hotline: 0180 6 996633\n- DB Website für Serviceeinrichtungen nutzen\n\nDa Freiburg ein großer deutscher Hauptbahnhof ist, ist die Verfügbarkeit von Schliessfächern wahrscheinlich, aber die genaue Verfügbarkeit, Größen und Preise können nur durch direkte Abfrage beim Bahnhof ermittelt werden.",
+    "answerLength": 1085,
+    "metadata": {
+      "model": "anthropic/claude-haiku-4.5",
+      "toolCalls": 3,
+      "llmRounds": 3,
+      "duration": 18204
+    },
+    "mustNotContainViolations": [],
+    "groundTruthCheck": {
+      "checked": true,
+      "stationMentioned": true,
+      "coordinatesUsed": false
+    },
+    "error": null
+  },
+  {
+    "scenarioId": "blind-tactile-hannover",
+    "runIndex": 0,
+    "success": true,
+    "totalTime": 15484,
+    "initTime": 8,
+    "callTime": 9,
+    "toolName": "bahnhofs-ueberleben",
+    "answerText": "Der Hannover Hauptbahnhof ist für blinde Menschen gut ausgestattet. Besonders wichtig: Die direkt unter dem Bahnhof gelegene U-Bahn-Haltestelle \"Hauptbahnhof\" verfügt über taktile Bodenmarkierungen (Noppen und Rillen), die zur Orientierung dienen [1]. Die nahegelegene U-Bahn-Haltestelle \"Kröpcke\" (ca. 5 Minuten zu Fuß) hat ebenfalls vollständige taktile Markierungen [1]. Der Hauptbahnhof selbst ist stufenlos zugänglich, und die DB bietet einen speziellen Mobilityservice an [1]. Zusätzlich gibt es akustische Signale an Fußgängerübergängen der U-Bahn [1]. Barrierefreie Toiletten und Geschäfte sind in unmittelbarer Nähe verfügbar [1].",
+    "answerLength": 639,
+    "metadata": {
+      "model": "anthropic/claude-haiku-4.5",
+      "toolCalls": 3,
+      "llmRounds": 2,
+      "duration": 15461
+    },
+    "mustNotContainViolations": [],
+    "groundTruthCheck": {
+      "checked": true,
+      "stationMentioned": true,
+      "coordinatesUsed": false
+    },
+    "error": null
+  },
+  {
+    "scenarioId": "weather-check-ulm",
+    "runIndex": 0,
+    "success": true,
+    "totalTime": 36126,
+    "initTime": 17,
+    "callTime": 17,
+    "toolName": "bahnhofs-ueberleben",
+    "answerText": "Der gestrandete Reisende befindet sich am Ulm Hauptbahnhof (48.399586°N, 9.982422°O) bei kalten Bedingungen. Die aktuelle Temperatur beträgt 5,3°C mit bedecktem Himmel, Windgeschwindigkeiten von 12,2 km/h (Böen bis 15,8 km/h) und einer Luftfeuchtigkeit von 83% [1]. Dies ist zwar oberhalb des Gefrierpunktes, doch die Windabkühlung führt zu spürbarer Kälte.\n\nFür die unmittelbare Weiterreise stehen mehrere Optionen innerhalb der nächsten Stunde zur Verfügung [2]:\n- RS71 nach Weißenhorn planmäßig 18:55 Uhr, Gleis 5b (0 Minuten Verspätung)\n- STR 2 nach Donauhalle um 18:55 Uhr (pünktlich)\n- Bus 10 zu Stadtwerke um 18:57 Uhr (4 Minuten Verspätung)\n\nDer Reisende sollte sich ins warme Bahnhofgebäude begeben, das umfangreiche Amenitäten wie Toiletten, Cafés und Kioske bietet, um den Komfort zu verbessern und die Wartezeit bis zur Abfahrt zu überbrücken.",
+    "answerLength": 855,
+    "metadata": {
+      "model": "anthropic/claude-haiku-4.5",
+      "toolCalls": 5,
+      "llmRounds": 3,
+      "duration": 36090
+    },
+    "mustNotContainViolations": [],
+    "groundTruthCheck": {
+      "checked": true,
+      "stationMentioned": true,
+      "coordinatesUsed": true
+    },
+    "error": null
+  }
+]

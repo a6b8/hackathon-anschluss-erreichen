@@ -1,0 +1,15 @@
+{
+  "id": "clear-weather",
+  "query": "Wie kalt ist es gerade am Bahnhof Regensburg?",
+  "expectedElicitation": false,
+  "gotElicitation": true,
+  "match": false,
+  "elicitation": {
+    "hasQuestion": true,
+    "isMainlyQuestion": true,
+    "questionMarks": 2,
+    "questionWordCount": 2
+  },
+  "answerPreview": "Ich verstehe, dass du wissen möchtest, wie kalt es aktuell am Bahnhof Regensburg ist. \n\nLeider habe ich keinen direkten Zugriff auf aktuelle Wetterdaten oder Temperaturen. Meine spezialisierten Module sind auf Reisesituationen ausgerichtet:\n\n- **Bahnhofs-Überleben** kann dir helfen, wenn du dort gestrandet bist und warme Räume, offene Cafés oder Unterkünfte brauchst\n- **Ticketkauf** berücksichtigt Wetter bei der Reiseplanung zum Zielort\n- Andere Module für Anschlüsse, Orientierung und Radparken\n",
+  "totalTime": 5
+}

@@ -1,0 +1,15 @@
+{
+  "id": "clear-weather",
+  "query": "Wie kalt ist es gerade am Bahnhof Regensburg?",
+  "expectedElicitation": false,
+  "gotElicitation": false,
+  "match": true,
+  "elicitation": {
+    "hasQuestion": false,
+    "isMainlyQuestion": false,
+    "questionMarks": 0,
+    "questionWordCount": 1
+  },
+  "answerPreview": "Am Bahnhof Regensburg ist es aktuell **6°C kalt** [1]. \n\nDas Wetter zeigt sich vollständig bewölkt mit 100% Wolkendecke, bleibt aber trocken ohne Niederschlag [1]. Der Wind weht mit 8-14 km/h, mit Böen bis zu 14 km/h, was die gefühlte Temperatur deutlich senkt [1]. Bei einer Luftfeuchtigkeit von 71% fühlt sich die Kälte zusammen mit dem Wind unangenehmer an als die reine Temperatur vermuten lässt [1].\n\n**Empfehlung:** Bei diesen Temperaturen solltest du auf warme Kleidung achten und bei längeren",
+  "totalTime": 5
+}

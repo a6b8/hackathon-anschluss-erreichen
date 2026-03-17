@@ -1,0 +1,15 @@
+{
+  "id": "vague-delay",
+  "query": "Mein Zug hat Verspaetung",
+  "expectedElicitation": true,
+  "gotElicitation": true,
+  "match": true,
+  "elicitation": {
+    "hasQuestion": true,
+    "isMainlyQuestion": true,
+    "questionMarks": 4,
+    "questionWordCount": 2
+  },
+  "answerPreview": "Ich verstehe, dass dein Zug Verspätung hat. Damit ich dir helfen kann, brauche ich noch kurz diese Infos:\n\n- **Wo bist du gerade?** (Welcher Bahnhof?)\n- **Welchen Zug hast du?** (Z.B. ICE 123, RE nach München)\n- **Hast du einen Anschlusszug, den du erreichen musst?**",
+  "totalTime": 9
+}

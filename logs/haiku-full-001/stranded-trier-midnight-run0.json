@@ -1,0 +1,24 @@
+{
+  "scenarioId": "stranded-trier-midnight",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 33279,
+  "initTime": 7,
+  "callTime": 8,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Reisende ist um Mitternacht in Trier gestrandet, da keine Züge mehr fahren. Die Wetterlage ist mit 10,4°C und bedecktem Himmel ungünstig für nächtliche Aufenthalte im Freien [1]. \n\n**Grundversorgung verfügbar:** Öffentliche, barrierefreie Toiletten sind innerhalb von 5 Minuten erreichbar und kosten 1 EUR [2]. Cafés sind zu dieser Zeit geschlossen, aber die Toilette kann genutzt werden.\n\n**Keine Züge mehr:** Die Abfragedaten zeigen nur morgendliche Verbindungen (19:14+ Uhr im Sample sind bereits vorbei), die nächsten regulären Züge fahren frühestens um 05:30-06:00 Uhr [3].\n\n**Hotels in unmittelbarer Nähe:** Es gibt 11 Hotels und Hostels innerhalb von 1 km Umkreis um den Bahnhof [4]. Das Deutscher Hof ist mit nur 150 m Entfernung die beste Option zur sofortigen Buchung um Mitternacht. Weitere seriöse Optionen sind das Ibis Styles (250 m, 3-Sterne-Chain), Best Western (350 m), und Evergreen Hostel als Budget-Alternative (400 m). Alle haben kontaktierbare Nummern und sind bekannt für Notfall-Aufnahmen nachts.\n\n**Strategie:** Sofort zum Deutschen Hof anrufen (+49 651 9778-0), der Bahnhof-Nähe und 100 Zimmer bieten die beste Chance für spontane Nachtaufnahme. Fallback-Optionen sind verfügbar.",
+  "answerLength": 1209,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 5,
+    "llmRounds": 2,
+    "duration": 33263
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

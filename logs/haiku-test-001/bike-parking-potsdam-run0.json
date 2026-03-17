@@ -1,0 +1,24 @@
+{
+  "scenarioId": "bike-parking-potsdam",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 29175,
+  "initTime": 12,
+  "callTime": 17,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Am Potsdam Hauptbahnhof stehen dem Reisenden mehrere sichere Optionen zur Verfügung, sein Fahrrad abzustellen [1]. \n\nDie **beste Option für maximale Sicherheit** ist die **Radstation** (ID: 3871219654) auf der Babelsberger Straße [1]. Sie bietet 550 Fahrradplätze in überdachten Lockern, ist 24/7 geöffnet, überwacht und beleuchtet. Die Bezahlung erfolgt ausschließlich per App (Parkwheel-App für Android und iOS), wird von der Bahnland GmbH betrieben und eignet sich auch für Lastenräder [1].\n\nEine Alternative **mit persönlicher Beratung** ist **Pedales** (ID: 5460616279), ein Fahrradladen auf der Babelsberger Straße 16 [1]. Dieser bietet nicht nur Parkplätze, sondern auch Reparaturservices, Vermietung, Ersatzteile und weitere Fahrrad-Services. Die Öffnungszeiten sind Mo-Fr 7:00-19:00, Sa 9:30-19:00 und So 9:30-18:00. Der Betreiber ist erreichbar unter +49 331 887 19917 [1].\n\nFür Budget-bewusste Nutzer gibt es mehrere **kostenlose Parkoptionen**: Ein überdachter Ständer mit 30 Plätzen (ID: 3246099583) bietet Schutz vor Wetter, während mehrere offene Ständer mit je 30 Plätzen verteilt rund um den Bahnhof kostenfrei zur Verfügung stehen (IDs: 6788671758, 3624041893, 3624035992) [1]. Diese sind beleuchtet und gut zugänglich.\n\nZusätzlich existiert die **Fahrrad-Vermietstation PotsdamRad** (ID: 1695098954) direkt am Hauptbahnhof Süd beim Taxistand mit 12 Leihrädern, betrieben von Nextbike für Nutzer ohne eigenes Fahrrad [1].\n\nAlle Parkplätze liegen unmittelbar am oder im nächsten Umfeld des Potsdam Hauptbahnhofs (52.391509, 13.0667031) [2], sodass der Fußweg minimal ist.",
+  "answerLength": 1588,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 3,
+    "llmRounds": 3,
+    "duration": 29144
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

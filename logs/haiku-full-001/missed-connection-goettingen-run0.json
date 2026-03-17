@@ -1,0 +1,24 @@
+{
+  "scenarioId": "missed-connection-goettingen",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 40798,
+  "initTime": 8,
+  "callTime": 12,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Reisende hat seinen Anschluss in Göttingen verpasst und benötigt Informationen zur Weiterfahrt nach Kassel sowie zur unmittelbaren Versorgung.\n\n**Wetter- und Lagesituation [1]:**\nAktuelle Bedingungen in Göttingen zeigen 8,4°C Temperatur, vollständig bewölkt, Wind 9-10 m/s mit Böen bis 14 m/s. Die Beobachtung stammt von der DWD-Station Göttingen um 18:00 Uhr am 17.03.2026. Es ist dunkel und windig - der Reisende benötigt warmen Schutz.\n\n**Grundversorgung - Amenities [2]:**\nDie Bahnhofsumgebung (im 500m-Radius um 51.53676°N, 9.926257°E) bietet ausreichende Versorgung:\n- Cafés für Wärme und Getränke: mannamia (Groner Str. 25), Kaffeezeit (Theaterstr. 1), Alfredo Espressobar (Weender Str. 15), Weltladencafe (Nikolaistr. 10)\n- Apotheken: Hubertus-Apotheke (Kurze-Geismar-Str. 32, Mo-Sa 08:00-20:00), Marien-Apotheke (Groner-Tor-Str. 25, Mo-Fr 08:00-18:00)\n- Geldautomaten und ATMs sind vorhanden\n- Toilettenfazilitäten sind im Bahnhof verfügbar\n\n**Zugverbindungen [3]:**\nGöttingen (IBNR: 8000128) ist eine Hauptstation mit Zugang zu Regional-, RegionalExpress- und Fernverkehr. Die Strecke nach Kassel wird regelmäßig mit Regional- und RegionalExpress-Zügen bedient. Die typische Fahrtzeit beträgt 50-90 Minuten je nach Zugtyp. Normalerweise fahren Züge stündlich in verschiedenen Tageszeiten ab. Die API-Abfrage für aktuelle Echtzeit-Abfahrten schlug fehl, daher muss der Reisende sich am Bahnhof-Schalter oder über das elektronische Abfahrtsbrett informieren.\n\n**Übernachtungsmöglichkeiten [4]:**\nFür den Fall, dass der letzte Zug bereits weg ist oder ein Umstieg nicht machbar ist, stehen mehrere Hotels im unmittelbaren Bahnhofsbereich zur Verfügung (alle <1km entfernt):\n- Four Points Flex (Bahnhofsallee 1a): Direkt beim Bahnhof, Tel. +49 551 52110, barrierefrei\n- B&B Hotel Göttingen-City (Maschmühlenweg 21): 300m entfernt, Tel. +49 551 309800, barrierefrei mit 102 Zimmer\n- Hotel Freigeist (Berliner Str. 30): Modern, 24/7 geöffnet, barrierefrei\n- Holiday Inn Express (Carl-Zeiss-St",
+  "answerLength": 2265,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 7,
+    "llmRounds": 5,
+    "duration": 40774
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

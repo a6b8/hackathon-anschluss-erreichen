@@ -1,0 +1,24 @@
+{
+  "scenarioId": "stranded-bamberg-rain",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 26187,
+  "initTime": 5,
+  "callTime": 9,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der gestrandete Reisende sitzt im Regen in Bamberg nach Zug-Ausfall. Die aktuellen Daten zeigen: (1) Temperatur 5,4°C, bewölkt, Regen lässt nach [1]. (2) Der ICE 603 nach München fährt in ~10 Minuten ab (19:17 Uhr, Gleis 3) mit nur 1 Min. Verspätung [2]. (3) Der Bahnhof Bamberg bietet sofortige Zuflucht mit Toiletten, Cafés und warmen Wartebereichen direkt im Gebäude [3]. SOFORT-MASSNAHMEN: Raus aus dem Regen ins Bahnhofsgebäude, heißes Getränk, dann zum Zug. Das ist die schnellste Lösung für Wärme und Weiterreise.",
+  "answerLength": 520,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 5,
+    "llmRounds": 3,
+    "duration": 26167
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

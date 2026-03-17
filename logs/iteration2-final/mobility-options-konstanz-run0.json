@@ -1,0 +1,24 @@
+{
+  "scenarioId": "mobility-options-konstanz",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 32368,
+  "initTime": 5,
+  "callTime": 8,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Bahnhof Konstanz bietet ein umfassendes multimodales Mobilitätsnetzwerk [1]. **Busverbindungen**: Es gibt drei gut erreichbare Haltestellen des Verkehrsverbunds Hegau-Bodensee (VHB), betrieben von den Stadtwerken Konstanz [1]. Die Haltestelle \"Bahnhof\" (47.659°N, 9.177°O) liegt direkt am Bahnhof mit modernen Amenitäten wie Informationstafel, Überdachung und WLAN-Zugang [1]. **Taxis**: Taxis sind am Bahnhof offiziell verfügbar und stehen zur Verfügung [2].\n\n**Fahrrad-Infrastruktur**: Der Bahnhof Konstanz verfügt über ein robustes Fahrrad-System. Die Kultur-Rädle Konstanz (ADFC-Infoshop) befindet sich direkt am Bahnhofplatz 29, 78462 Konstanz [3]. Sie bietet vielfältige Fahrrad-Typen (Stadt-, Touren-, Kinderräder, Pedelecs, Tandems) sowie Reparatur- und Einzelhandelsdienste an [3]. Die Öffnungszeiten sind werktags 9:00–18:00 Uhr, Samstags 10:00–16:00 Uhr [3].\n\nDer Bahnhof hat **14 spezialisierte Fahrrad-Parkplätze** im 500-Meter-Umkreis mit insgesamt **600+ Stellplätzen** [1]. Der größte Platz bietet 144 kostenlose Stellplätze direkt am Bahnhof [1]. Alle Parkplätze sind gebührenfrei und teilweise überdacht [1].\n\n**Fährverbindungen** (Besonderheit): Konstanz ist ein einzigartiger Standort mit vier Fähr-Anlegern [1]. Die Bodensee-Schiffsbetriebe (BSB) und die Katamaran-Anleger akzeptieren Passagiere und Fahrräder, wobei die Katamaran-Station rollstuhlgerecht ist [1]. Diese Fähren verbinden Konstanz mit anderen Bodensee-Gemeinden und der Schweiz [1].",
+  "answerLength": 1473,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 3,
+    "llmRounds": 4,
+    "duration": 32352
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

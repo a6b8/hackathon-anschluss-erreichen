@@ -1,0 +1,24 @@
+{
+  "scenarioId": "blind-tactile-hannover",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 62119,
+  "initTime": 6,
+  "callTime": 11,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Am Hannover Hauptbahnhof sind mehrere barrierefreie Einrichtungen für blinde und sehbehinderte Reisende vorhanden. Die wichtigsten Ergebnisse:\n\n**Taktile Leitsysteme:**\nDie U-Bahn-Station \"Hauptbahnhof\" direkt unter dem Hbf verfügt über taktile Leitstreifen [1]. Ebenso ist die nahegelegene U-Bahn-Station Kröpcke (ca. 400m südlich) mit taktilen Leitsystemen ausgestattet [1]. Ein Fußgängerüberweg am Ernst-August-Platz in unmittelbarer Nähe zum Bahnhof weist ebenfalls taktile Markierungen auf [1].\n\n**Akustische Signale:**\nEine Ampelanlage nördlich des Hauptbahnhofs (ca. 200m entfernt) ist mit akustischen und Vibrationssignalen ausgestattet [1], allerdings ohne taktile Bodenleitstreifen.\n\n**Barrierefreie Toiletten:**\nZwei rollstuhlgerechte Toiletten befinden sich in fußläufiger Nähe: am Raschplatz 11D (kostenfrei, mit erweiterten Öffnungszeiten und CBF-Schlüssel-Zugang) und am Ernst-August-Platz (kostenpflichtig) [3].\n\n**Aufenthaltsmöglichkeiten:**\nMehrere rollstuhlgerechte Cafés und Geschäfte mit barrierefreien Toiletten sind verfügbar, darunter die Galeria Kaufhof am Ernst-August-Platz und die Hannoversche Kaffee Manufaktur [3].\n\n**Wetterbedingungen:**\nAktuell 10,4°C, bedeckt, trocken mit moderatem Wind aus Südost – angenehme Bedingungen für Außenwege [2].",
+  "answerLength": 1274,
+  "metadata": {
+    "model": "anthropic/claude-sonnet-4-5-20250929",
+    "toolCalls": 5,
+    "llmRounds": 3,
+    "duration": 62096
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

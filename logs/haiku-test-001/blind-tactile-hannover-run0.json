@@ -1,0 +1,24 @@
+{
+  "scenarioId": "blind-tactile-hannover",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 15484,
+  "initTime": 8,
+  "callTime": 9,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Hannover Hauptbahnhof ist für blinde Menschen gut ausgestattet. Besonders wichtig: Die direkt unter dem Bahnhof gelegene U-Bahn-Haltestelle \"Hauptbahnhof\" verfügt über taktile Bodenmarkierungen (Noppen und Rillen), die zur Orientierung dienen [1]. Die nahegelegene U-Bahn-Haltestelle \"Kröpcke\" (ca. 5 Minuten zu Fuß) hat ebenfalls vollständige taktile Markierungen [1]. Der Hauptbahnhof selbst ist stufenlos zugänglich, und die DB bietet einen speziellen Mobilityservice an [1]. Zusätzlich gibt es akustische Signale an Fußgängerübergängen der U-Bahn [1]. Barrierefreie Toiletten und Geschäfte sind in unmittelbarer Nähe verfügbar [1].",
+  "answerLength": 639,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 3,
+    "llmRounds": 2,
+    "duration": 15461
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

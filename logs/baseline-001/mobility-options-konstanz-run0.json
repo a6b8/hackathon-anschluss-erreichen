@@ -1,0 +1,24 @@
+{
+  "scenarioId": "mobility-options-konstanz",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 65069,
+  "initTime": 18,
+  "callTime": 20,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "## 🌤️ **Wetter & Lage**\n\nAm Bahnhof Konstanz herrschen aktuell **9,9°C mit 100% Bewölkung**[1]. Der Wind kommt aus östlicher Richtung mit 8,6 km/h (Böen bis 13,3 km/h), die Luftfeuchtigkeit liegt bei 60%. Es ist trocken, aber bewölkt – perfekt für Mobilität vor Ort.\n\n## 🚌 🚖 🚲 **Ihre Mobilitätsoptionen**\n\n### **Fahrradverleih & Fahrradservice**\n✅ **Kultur-Rädle Konstanz | ADFC-Infoshop**[2]\n- **Adresse:** Bahnhofplatz 29, 78462 Konstanz\n- **Lage:** Direkt am Bahnhofsplatz (ca. 30 Meter vom Bahnhof)\n- **Service:** Fahrradverleih und ADFC-Infoshop\n\n### **Busse & Taxis**\nDie spezialisierte Mobilitätssuche hat leider keine detaillierten Ergebnisse für Bushaltestellen und Taxistände direkt am Bahnhof geliefert[3]. Dies ist technisch bedingt, ABER: Am Bahnhof Konstanz befindet sich der zentrale **ZOB (Zentraler Omnibusbahnhof)** direkt vor dem Hauptgebäude. Hier verkehren Stadtbusse sowie Regional- und Fernbusse.\n\n**Taxistände** befinden sich typischerweise direkt am Bahnhofsvorplatz, auch wenn diese in den OpenStreetMap-Daten nicht explizit erfasst sind.\n\n## 🏪 **Wichtige Einrichtungen in direkter Bahnhofsnähe**\n\nFalls Sie warten müssen, gibt es folgende Annehmlichkeiten:\n\n**Cafés & Verpflegung:**\n- **Coffee Fellows**[4] – im Bahnhof, Mo-Do 07:00-19:00, Fr-Sa 07:00-20:00\n- **Pane e Amore**[4] – Brotlaube 1 (200m), Mo-Sa 09:30-19:00\n- **Rosgarten-Café**[4] – Rosgartenstraße 13 (150m)\n\n**Toiletten:**\n- **Kultur-Rädle**[4] – Bahnhofplatz (kostenpflichtig, barrierefrei)\n- **LAGO Shopping Center**[4] – 200m südlich (kostenlos, Level 1, barrierefrei)\n\n**Geldautomaten:**\n- **Sparkasse Bodensee**[4] – direkt am Bahnhof\n- **Postbank**[4] – ebenfalls Bahnhofsnähe\n\n**Apotheken:**\n- **Seeapotheke**[4] – Sigismundstraße 1 (100m), Mo-Fr 08:30-18:30, Sa 09:00-16:00\n\n## 💡 **Zusammenfassung**\n\nAm Bahnhof Konstanz haben Sie folgende **Mobilitätsoptionen**:\n- ✅ **Fahrradverleih** – Kultur-Rädle direkt am Bahnhofsplatz\n- ✅ **Busse** – ZOB am Bahnhofsvorplatz (Stadtbusse, Regionalbusse)\n",
+  "answerLength": 2124,
+  "metadata": {
+    "model": "anthropic/claude-sonnet-4-5-20250929",
+    "toolCalls": 9,
+    "llmRounds": 4,
+    "duration": 65024
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

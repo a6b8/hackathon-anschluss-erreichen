@@ -1,0 +1,24 @@
+{
+  "scenarioId": "lockers-freiburg",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 26008,
+  "initTime": 5,
+  "callTime": 6,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Die Abfrage der verfügbaren Datenbanken zeigt, dass der Freiburg (Breisgau) Hauptbahnhof ein großer Bahnhof der Kategorie 2 mit umfangreicher Infrastruktur ist [1]. Jedoch sind Schliessfächer nicht in den OpenStreetMap-Mobilitätsdaten erfasst, die hauptsächlich Fahrrad-Infrastruktur, öffentliche Verkehrshaltestellen und Barrierefreiheitsmerkmale abbilden [2].\n\nDer Bahnhof ist als großer Kopfbahnhof mit IC/ICE-Anbindung ausgelegt und sollte nach Standardausstattung von Großbahnhöfen der DB AG über Schliessfächer verfügen. Eine zuverlässige Bestätigung und Information zu Lage, Größe und Preisen der Schliessfächer am Freiburg Hauptbahnhof ist jedoch nur durch direkte Anfrage bei der DB Station & Service oder vor Ort möglich.",
+  "answerLength": 731,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 5,
+    "llmRounds": 3,
+    "duration": 25992
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

@@ -1,0 +1,24 @@
+{
+  "scenarioId": "accessible-toilets-jannowitzbruecke",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 24254,
+  "initTime": 7,
+  "callTime": 9,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Bahnhof Jannowitz Brücke (Berlin-Mitte) ist eine öffentliche S- und U-Bahn-Station mit Toiletten. [1] Während die spezifischen Daten zu barrierefreien Einrichtungen nicht direkt abrufbar waren, verfügt der Bahnhof als regelmaßig besuchte BVB-Station über Standard-Ausstattung. [1] Am Bahnhof sind mehrere Cafés (Bake & Bite, Exclusive Coffee) und Geldautomaten vorhanden. [2] Die empfohlene Vorgehensweise ist, den Stationshelfer vor Ort zu fragen oder direkt die BVG unter 030/25411155 zu kontaktieren, um die exakte Lage der barrierefreien Toiletten zu erfahren.",
+  "answerLength": 568,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 4,
+    "llmRounds": 3,
+    "duration": 24233
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": false,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

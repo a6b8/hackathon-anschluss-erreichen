@@ -1,0 +1,24 @@
+{
+  "scenarioId": "stranded-bad-belzig",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 33066,
+  "initTime": 115,
+  "callTime": 16,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Reisende ist um 23 Uhr in Bad Belzig gestrandet, nachdem sein Zug ausgefallen ist. Die Daten zeigen: [1] Die aktuelle Temperatur in Bad Belzig beträgt 5,8°C mit klarem Himmel und 70% Luftfeuchte - es ist kühl aber trocken. [2] Die nächsten Abfahrten zeigen hauptsächlich lokale Busse (581, 582, 590) in den kommenden Stunden, aber einen RE7 der planmäßig um 19:41 Uhr hätte fahren sollen (allerdings mit 4 Minuten Verspätung). Dies war möglicherweise der Zug des Reisenden, dessen Ausfall das Problem ist. [3] Die Stationsumgebung zeigt nach Overpass-Abfrage keine direkt integrierten Toiletten oder Cafés in unmittelbarer Nähe zur Station. [4] Die Nominatim-Suche enthüllt das Hotel Burg Eisenhardt (Straße der Einheit 41, Bad Belzig) als verfügbare Übernachtungsoption, ca. 500-600m von der Station entfernt - vollkommen erreichbar mit Taxi (Taxi-Service ist über VBB verfügbar). Die Transportdatenbank zeigt Taxi-Verfügbarkeit an der Station.",
+  "answerLength": 949,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 8,
+    "llmRounds": 4,
+    "duration": 32925
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

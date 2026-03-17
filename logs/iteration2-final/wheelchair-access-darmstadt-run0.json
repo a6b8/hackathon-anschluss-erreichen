@@ -1,0 +1,24 @@
+{
+  "scenarioId": "wheelchair-access-darmstadt",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 18472,
+  "initTime": 7,
+  "callTime": 11,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Bahnhof Darmstadt Hbf (Am Hauptbahnhof 20, 64293 Darmstadt) ist vollständig barrierefrei für Rollstuhlfahrer ausgestattet [1]. Das System bestätigt \"hasSteplessAccess: yes\", was bedeutet, dass der gesamte Bahnhof stufenlos erreichbar ist. Ein besonderer Service ist der verfügbare Mobilitätsservice, der es gestrandeten oder mobilitätseingeschränkten Reisenden ermöglicht, Unterstützung zu bekommen - Voranmeldung ist unter der Nummer 030 65 21 28 88 möglich [1].\n\nFür die Toilettennutzung gibt es mehrere barrierefreie Optionen. Die Bahnhofstoilette im Untergeschoss des Luisenplatzes (Luisenplatz 5) ist mit Rollstuhl zugänglich, kostet aber einen kleinen Betrag. Daneben gibt es kostenlose \"Nette Toilette\"-Stationen in der Innenstadt, einige davon sind ebenfalls barrierefrei ausgestattet [2].\n\nAm Bahnhof und in unmittelbarer Nähe gibt es mehrere barrierefreie Apotheken und Cafés, solltest du etwas trinken oder essen benötigen. Die Engel-Apotheke und Alpha-Apotheke sind beide barrierefrei erreichbar [2]. Für weitere Fragen vor Ort steht die Stadtinformation am Luisenplatz 5A zur Verfügung.",
+  "answerLength": 1103,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 3,
+    "llmRounds": 2,
+    "duration": 18455
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}

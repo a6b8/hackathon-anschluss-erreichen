@@ -1,0 +1,15 @@
+{
+  "id": "vague-stranded",
+  "query": "Hilfe, ich bin gestrandet",
+  "expectedElicitation": true,
+  "gotElicitation": true,
+  "match": true,
+  "elicitation": {
+    "hasQuestion": true,
+    "isMainlyQuestion": true,
+    "questionMarks": 6,
+    "questionWordCount": 3
+  },
+  "answerPreview": "Ich helfe dir sofort! Um dir am besten zu helfen, brauche ich ein paar Infos:\n\n- **Wo bist du gerade?** (Welcher Bahnhof?)\n- **Was ist passiert?** (Zug ausgefallen, verpasst, Verspätung?)\n- **Was brauchst du jetzt?** (Toilette, warmer Ort, Essen/Trinken, Übernachtung, nächste Verbindung?)\n\nJe mehr du mir sagst, desto besser kann ich dir helfen!",
+  "totalTime": 7
+}

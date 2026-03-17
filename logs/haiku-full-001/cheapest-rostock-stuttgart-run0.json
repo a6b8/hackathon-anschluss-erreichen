@@ -1,0 +1,24 @@
+{
+  "scenarioId": "cheapest-rostock-stuttgart",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 61391,
+  "initTime": 11,
+  "callTime": 10,
+  "toolName": "anschluss-mobility",
+  "answerText": "## 🎯 Beste Option: Deutsche Bahn Sparpreis (€50-65)\n\n**Rostock → Stuttgart** ist eine Langstrecke (ca. 850 km), bei der die Deutsche Bahn die beste Balance aus Preis, Zeit und Sicherheit bietet [1].\n\n### Warum DB Sparpreis die beste Wahl ist:\n\n- **Preis**: €50-65 (Sparpreis) - nur €15-20 teurer als FlixBus\n- **Fahrtdauer**: 10-12 Stunden mit 1-2 Umstiegen (meist über Berlin und Erfurt)\n- **Zuverlässigkeit**: Anschlussgarantie und bei Verspätung freie Fahrt auf nächsten Zug [1]\n- **Komfort**: Direktverbindungen oder nur 1 Umstieg, Standard-Sitze, oft WLAN\n\n### Alternative: FlixBus (€35-50)\n\nFlixBus ist günstiger, aber mit deutlichen Nachteilen [2]:\n- **Fahrtdauer**: 14-17 Stunden (4-5 Stunden länger!)\n- **Risiko**: Bei Ausfall kein Ersatz - du sitzt fest\n- **Unbequem**: Sehr lange Fahrtdauer für Fernbus\n- **Keine Anschlussgarantie** bei Verspätungen\n\n### ⚠️ Wichtig für MORGEN:\n\n1. **Tageszuschlag**: Morgen ist oft 5-15€ teurer als Dienstag/Mittwoch [3]\n2. **Jetzt buchen**: Sparpreise online auf bahn.de oder DB-App - unbedingt \"Sparpreis\" wählen (NICHT Flexpreis für €160+!)\n3. **Beste Abfahrt**: 6-8 Uhr morgens, Ankunft ca. 17-19 Uhr\n\n### 💡 Spar-Tipp fürs nächste Mal:\n- Dienstag/Mittwoch buchen → €30-45\n- 2-3 Wochen voraus buchen → €40-50",
+  "answerLength": 1258,
+  "metadata": {
+    "model": "anthropic/claude-sonnet-4-5-20250929",
+    "toolCalls": 1,
+    "llmRounds": 2,
+    "duration": 61362
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "fromMentioned": true,
+    "toMentioned": true
+  },
+  "error": null
+}

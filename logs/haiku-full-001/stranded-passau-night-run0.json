@@ -1,0 +1,24 @@
+{
+  "scenarioId": "stranded-passau-night",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 23540,
+  "initTime": 8,
+  "callTime": 12,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Nachtzug des Reisenden fällt um 1 Uhr nachts in Passau aus. Die Temperaturen liegen bei 4°C mit Windböen bis 10 m/s - es ist zu kalt um draußen zu warten [1]. Der Passau Hauptbahnhof (48.5738°N, 13.4508°O) bietet als erste Anlaufstelle einen 24-Stunden-Servicebereich in der geheizten Bahnhofshalle an [2]. Hotels befinden sich im Fußweg-Umkreis von unter 500m vom Bahnhof entfernt [3]. Die Deutsche Bahn ist nach ihren Bedingungen verpflichtet, bei Zugausfällen eine kostenlose Notfall-Übernachtung zu arrangieren und ein kostenloses Alternativticket für den nächsten Tag auszustellen [4].",
+  "answerLength": 594,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 5,
+    "llmRounds": 3,
+    "duration": 23516
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": true
+  },
+  "error": null
+}

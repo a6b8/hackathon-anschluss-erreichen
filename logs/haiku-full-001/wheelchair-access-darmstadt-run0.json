@@ -1,0 +1,24 @@
+{
+  "scenarioId": "wheelchair-access-darmstadt",
+  "runIndex": 0,
+  "success": true,
+  "totalTime": 23577,
+  "initTime": 5,
+  "callTime": 6,
+  "toolName": "bahnhofs-ueberleben",
+  "answerText": "Der Bahnhof Darmstadt ist vollständig barrierefrei und rollstuhlgerecht ausgestattet [1]. \n\n**Zugänge und Aufzüge:** Es gibt zwei barrierefreie Hauptzugänge mit automatischen Schiebetüren [1]. Der Haupteingang am Platz der Deutschen Einheit verfügt über eine automatische Tür und stufenlosen Zugang [1]. Der Nebeneingang Am Fürstenbahnhof ist ebenfalls mit einer automatischen Tür ausgestattet und barrierefrei erreichbar [1]. Die Unterführung und Gleiswechsel sind mit Aufzügen für barrierefreie Erreichbarkeit ausgestattet [1].\n\n**Toiletten:** Das WC Center befindet sich direkt am Bahnhof auf Ebene 0 und ist vollständig barrierefrei [1]. Es bietet eine spezielle Rollstuhltoilette, Handwaschbecken, Wickeltisch und Trinkwasser [1]. Die Öffnungszeiten sind täglich 6:00–22:00 Uhr, der Eintritt kostet 1,00 € [1].\n\n**Zusätzliche barrierefreie Einrichtungen:** Vinocentral (Wein- und Spezialitätenhandel mit Café, ca. 5 Minuten Gehweg) verfügt über eine Behinderten-Toilette und ist vollständig barrierefrei mit Parkplatz im Hof [1]. Das Restaurant Gorenshi (Sushi) ist ebenfalls barrierefrei zugänglich [1]. Vapiano (italienisches Restaurant, Rheinstraße 103) hat ein barrierefreies WC und ebenerdigen Zugang [1].\n\n**Behindertenparkplätze:** Es sind sowohl oberirdische Parkplätze (6 reservierte Plätze) als auch Tiefgaragenplätze für Menschen mit Behinderung vorhanden [1].\n\n**Weitere barrierefreie Verkehrsmittel:** Bus-Haltestellen (Platz 16, 17/18, 19, 22) haben Annäherungs- und Taktile Führungshilfen [1]. Die Tram-Haltestelle ist ebenfalls barrierefrei ausgestattet mit taktiler Pflasterung und Ampeln mit Laut- und Vibrationssignalen [1].",
+  "answerLength": 1648,
+  "metadata": {
+    "model": "anthropic/claude-haiku-4.5",
+    "toolCalls": 4,
+    "llmRounds": 3,
+    "duration": 23564
+  },
+  "mustNotContainViolations": [],
+  "groundTruthCheck": {
+    "checked": true,
+    "stationMentioned": true,
+    "coordinatesUsed": false
+  },
+  "error": null
+}
