@@ -1,0 +1,6 @@
+version: "2"
+tunnels:
+  hackathon:
+    addr: 4100
+    proto: http
+    hostname: hackathon-anschluss.ngrok.app
