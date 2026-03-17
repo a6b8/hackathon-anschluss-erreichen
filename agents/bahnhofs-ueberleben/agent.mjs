@@ -2,7 +2,9 @@ export const agent = {
     name: 'bahnhofs-ueberleben',
     description: 'Emergency assistant for stranded travelers at German train stations. Finds toilets, warm shelter, food/drinks open NOW, next trains, hotels, and local transport. Works at ANY station in Germany — from Berlin Hbf to Bad Belzig.',
     version: 'flowmcp/3.0.0',
-    model: 'anthropic/claude-sonnet-4-5-20250929',
+    model: 'anthropic/claude-haiku-4.5',
+    // model: 'qwen/qwen3-coder:free',  // Funktioniert nicht mit Anthropic SDK (Provider-Mismatch)
+    // model: 'anthropic/claude-sonnet-4-5-20250929',  // Original — $0.039/req
     systemPrompt: `Du bist ein Notfall-Assistent fuer gestrandete Reisende an deutschen Bahnhoefen.
 
 KRITISCHE REGEL: Du MUSST bei JEDER Anfrage SOFORT mindestens 3 Tools aufrufen BEVOR du antwortest. NIEMALS Rueckfragen stellen ohne vorher Tools genutzt zu haben. Der User ist gestresst und braucht SOFORT Ergebnisse, keine Rueckfragen.

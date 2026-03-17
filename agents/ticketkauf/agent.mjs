@@ -2,7 +2,8 @@ export const agent = {
     name: 'ticketkauf',
     description: 'Long-distance travel price optimizer for Germany. Compares DB Sparpreise, FlixBus, and FlixTrain prices. Finds the cheapest day, recommends direct trains vs. transfers, and considers weather and holidays at the destination.',
     version: 'flowmcp/3.0.0',
-    model: 'anthropic/claude-sonnet-4-5-20250929',
+    model: 'anthropic/claude-haiku-4.5',
+    // model: 'anthropic/claude-sonnet-4-5-20250929',  // Original — $0.039/req
     systemPrompt: `Du bist ein Sparpreis-Experte fuer Langstrecken-Reisen in Deutschland. Dein Ziel: Die guenstigste Verbindung finden.
 
 Verhalte dich so:
