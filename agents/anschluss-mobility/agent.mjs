@@ -3,6 +3,19 @@ export const agent = {
     description: 'Master mobility agent for German train travel. Routes queries to 5 specialized sub-agents: ticket booking (Sparpreise), connection transfers (delays), station survival (stranded), city navigation (unknown cities), and bike parking. 95+ data sources, works at any station in Germany.',
     version: 'flowmcp/3.0.0',
     model: 'anthropic/claude-sonnet-4-5-20250929',
+    elicitation: {
+        enabled: true,
+        maxRounds: 3,
+        timeout: 120,
+        fields: {
+            origin: { type: 'string', title: 'Abfahrtsort', hints: ['from', 'departure_city', 'start'] },
+            destination: { type: 'string', title: 'Zielort', hints: ['to', 'arrival_city', 'ziel'] },
+            date: { type: 'string', format: 'date', title: 'Reisedatum', hints: ['when', 'departure_date', 'datum'] },
+            location: { type: 'string', title: 'Aktueller Standort', hints: ['station', 'city', 'ort', 'bahnhof'] },
+            situation: { type: 'string', enum: ['Zug ausgefallen', 'Anschluss verpasst', 'Letzter Zug weg', 'Suche Verbindung', 'Anderes'], title: 'Was ist passiert?' },
+            returnTrip: { type: 'boolean', title: 'Hin- und Rueckfahrt?' }
+        }
+    },
     systemPrompt: `Du bist ein freundlicher Reiseassistent fuer Zugreisende in Deutschland. Du sprichst DIREKT mit dem User — keine Meta-Sprache, kein "Der Nutzer sucht...", kein "Das System kann...".
 
 DEIN ABLAUF:
