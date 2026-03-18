@@ -124,6 +124,30 @@ async function startServer() {
     console.log( '  /mcp/main — Anschluss-Mobility Main Agent (ready)' )
 
 
+    // --- Agent Card (/.well-known/agent.json) ---
+    app.get( '/.well-known/agent.json', ( req, res ) => {
+        res.json( {
+            name: 'Anschluss Mobility',
+            description: 'Multi-agent mobility system for German train travel. Finds tickets, helps stranded travelers, navigates cities, and compares prices across DB and FlixBus.',
+            url: `http://localhost:${PORT}`,
+            version: '1.0.0',
+            capabilities: {
+                mcp: {
+                    endpoints: [
+                        { path: '/mcp/main', description: 'Main Agent — routes to sub-agents' },
+                        { path: '/mcp/bahnhof', description: 'Stranded traveler emergency assistant' },
+                        { path: '/mcp/tickets', description: 'Ticket price optimizer (DB vs FlixBus)' }
+                    ]
+                }
+            },
+            contact: {
+                name: 'FlowMCP',
+                url: 'https://github.com/FlowMCP'
+            }
+        } )
+    } )
+
+
     // --- Health endpoint ---
     app.get( '/health', ( req, res ) => {
         res.json( {
