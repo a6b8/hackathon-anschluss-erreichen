@@ -1,0 +1,1 @@
+{"round":1,"timestamp":"2026-03-18T00:16:38.464Z","llmInput":{"messageCount":1,"systemPromptLength":1404,"toolCount":3},"llmOutput":{"textBlocks":["Von wo in Karlsruhe moechtest du losfahren und wann soll die Reise sein? Brauchst du nur die Hinfahrt oder auch ein Rueckticket?"],"toolCalls":[],"inputTokens":1638,"outputTokens":49},"toolResults":[]}
