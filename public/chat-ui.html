@@ -88,6 +88,7 @@
 
         let isWorking = false
         let sessionIds = {}
+        let conversationHistory = []
         const baseUrl = window.location.origin
 
         // --- SSE Connection ---
@@ -178,7 +179,12 @@
 
                 setStatus( 'Waiting for agent...', true )
 
-                const result = await mcpPost( url, { jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: { query: query } } }, sessionIds[ agent ] )
+                conversationHistory.push( { role: 'user', text: query } )
+                const fullContext = conversationHistory
+                    .map( function( m ) { return m.role === 'user' ? 'User: ' + m.text : 'Agent: ' + m.text } )
+                    .join( '\n' )
+
+                const result = await mcpPost( url, { jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: { query: fullContext } } }, sessionIds[ agent ] )
 
                 const content = result.data?.result?.content || []
                 const textContent = content.filter( function( c ) { return c.type === 'text' } ).map( function( c ) { return c.text } ).join( '\n' )
@@ -198,6 +204,7 @@
                     addMessage( 'Credits aufgebraucht. Bitte OpenRouter Credits aufladen.', 'error' )
                 } else {
                     addMessage( answerText, 'agent', metadata, toolCalls )
+                    conversationHistory.push( { role: 'agent', text: answerText.slice( 0, 500 ) } )
                 }
 
                 setStatus( 'Idle', false )
