@@ -174,8 +174,11 @@
 
             try {
                 if( !sessionIds[ agent ] ) {
-                    const init = await mcpPost( url, { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'chat-ui', version: '1.0.0' } } } )
+                    const init = await mcpPost( url, { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: { elicitation: { form: {} } }, clientInfo: { name: 'chat-ui', version: '1.0.0' } } } )
                     sessionIds[ agent ] = init.sessionId
+
+                    // Open GET SSE stream for server-initiated requests (elicitation)
+                    openServerStream( url, init.sessionId )
                 }
 
                 setStatus( 'Waiting for agent...', true )
@@ -272,6 +275,131 @@
         }
 
         // --- Event Handlers ---
+        let pendingElicitResolve = null
+
+        function openServerStream( url, sessionId ) {
+            fetch( url, {
+                method: 'GET',
+                headers: { 'Accept': 'text/event-stream', 'mcp-session-id': sessionId }
+            } ).then( function( response ) {
+                if( !response.ok || !response.body ) return
+
+                const reader = response.body.getReader()
+                const decoder = new TextDecoder()
+                let buf = ''
+
+                function pump() {
+                    reader.read().then( function( result ) {
+                        if( result.done ) return
+
+                        buf += decoder.decode( result.value, { stream: true } )
+                        const lines = buf.split( '\n' )
+                        buf = lines.pop()
+
+                        for( const line of lines ) {
+                            if( !line.startsWith( 'data: ' ) ) continue
+
+                            try {
+                                const msg = JSON.parse( line.slice( 6 ) )
+
+                                if( msg.method === 'elicitation/create' && msg.params ) {
+                                    console.log( 'ELICITATION RECEIVED:', msg )
+                                    showElicitationForm( msg, url, sessionId )
+                                }
+                            } catch( e ) {}
+                        }
+
+                        pump()
+                    } )
+                }
+
+                pump()
+            } ).catch( function( e ) {
+                console.log( 'Server stream error (may be normal if GET not supported):', e.message )
+            } )
+        }
+
+        function showElicitationForm( msg, url, sessionId ) {
+            const { id, params } = msg
+            const { message, requestedSchema } = params
+
+            const bubble = document.createElement( 'div' )
+            bubble.className = 'message elicitation'
+            bubble.innerHTML = '<strong>Agent fragt:</strong> ' + message
+
+            const form = document.createElement( 'form' )
+            form.style.cssText = 'margin-top:8px;display:flex;flex-direction:column;gap:6px;'
+
+            const properties = requestedSchema?.properties || {}
+            const required = requestedSchema?.required || []
+
+            Object.entries( properties ).forEach( function( entry ) {
+                const key = entry[ 0 ]
+                const schema = entry[ 1 ]
+
+                const label = document.createElement( 'label' )
+                label.style.cssText = 'font-size:12px;color:#ccc;'
+                label.textContent = schema.title || key
+
+                let input
+                if( schema.format === 'date' ) {
+                    input = document.createElement( 'input' )
+                    input.type = 'date'
+                } else if( schema.type === 'boolean' ) {
+                    input = document.createElement( 'input' )
+                    input.type = 'checkbox'
+                } else if( schema.enum ) {
+                    input = document.createElement( 'select' )
+                    schema.enum.forEach( function( val, i ) {
+                        const opt = document.createElement( 'option' )
+                        opt.value = val
+                        opt.textContent = schema.enumNames ? schema.enumNames[ i ] : val
+                        input.appendChild( opt )
+                    } )
+                } else {
+                    input = document.createElement( 'input' )
+                    input.type = 'text'
+                    input.placeholder = schema.description || schema.title || ''
+                }
+
+                input.name = key
+                input.required = required.includes( key )
+                input.style.cssText = 'background:#333;color:#e0e0e0;border:1px solid #555;border-radius:4px;padding:6px 8px;font-size:13px;'
+                form.appendChild( label )
+                form.appendChild( input )
+            } )
+
+            const submitBtn = document.createElement( 'button' )
+            submitBtn.textContent = 'Antworten'
+            submitBtn.style.cssText = 'background:#f59e0b;color:#000;border:none;border-radius:6px;padding:8px 16px;font-weight:600;cursor:pointer;margin-top:4px;'
+
+            submitBtn.onclick = async function( e ) {
+                e.preventDefault()
+                const content = {}
+
+                Object.keys( properties ).forEach( function( key ) {
+                    const schema = properties[ key ]
+
+                    if( schema.type === 'boolean' ) {
+                        content[ key ] = form.elements[ key ]?.checked || false
+                    } else {
+                        content[ key ] = new FormData( form ).get( key ) || ''
+                    }
+                } )
+
+                form.remove()
+                bubble.innerHTML += '<div style="margin-top:4px;color:#4ade80;font-size:12px;">Geantwortet: ' + Object.values( content ).join( ', ' ) + '</div>'
+
+                // Send elicitation response as POST
+                await mcpPost( url, { jsonrpc: '2.0', id: id, result: { action: 'accept', content: content } }, sessionId )
+            }
+
+            form.appendChild( submitBtn )
+            bubble.appendChild( form )
+            messagesEl.appendChild( bubble )
+            messagesEl.scrollTop = messagesEl.scrollHeight
+        }
+
         function processAgentResponse( data ) {
             const content = data?.result?.content || []
             const textContent = content.filter( function( c ) { return c.type === 'text' } ).map( function( c ) { return c.text } ).join( '\n' )
