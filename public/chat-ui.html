@@ -49,8 +49,22 @@
         #send-btn:hover { background: #22c55e; }
         #send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
+    <div id="login-screen" style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0f0f0f;">
+        <div style="background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:40px;width:360px;text-align:center;">
+            <h1 style="color:#fff;font-size:24px;margin-bottom:8px;">Anschluss Mobility</h1>
+            <p style="color:#888;font-size:14px;margin-bottom:24px;">Dein KI-Reiseassistent</p>
+            <input id="login-user" type="text" placeholder="Username" style="width:100%;background:#222;color:#e0e0e0;border:1px solid #444;border-radius:8px;padding:10px 14px;font-size:14px;margin-bottom:12px;box-sizing:border-box;" />
+            <input id="login-pass" type="password" placeholder="Password" style="width:100%;background:#222;color:#e0e0e0;border:1px solid #444;border-radius:8px;padding:10px 14px;font-size:14px;margin-bottom:16px;box-sizing:border-box;" />
+            <button id="login-btn" style="width:100%;background:#4ade80;color:#000;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;">Einloggen</button>
+            <div id="login-error" style="color:#ef4444;font-size:13px;margin-top:12px;display:none;"></div>
+        </div>
+    </div>
+
+    <div id="app-container" style="display:none;flex-direction:column;height:100vh;">
     <header>
         <div style="display:flex;align-items:center;gap:12px;">
             <h1>Anschluss Mobility</h1>
@@ -58,6 +72,8 @@
                 <option value="main">Main Agent</option>
                 <option value="bahnhof">Bahnhof-Ueberleben</option>
                 <option value="tickets">Ticketkauf</option>
+                <option value="radparken">Radparken</option>
+                <option value="navigator">Navigator</option>
             </select>
         </div>
         <div id="status-bar">
@@ -75,6 +91,7 @@
         <textarea id="user-input" placeholder="z.B. Ich bin am Bahnhof Marburg gestrandet..." rows="1"></textarea>
         <button id="send-btn">Senden</button>
     </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
     <script>
@@ -168,8 +185,17 @@
             setStatus( 'Connecting...', true )
 
             const agent = agentSelect.value
-            const agentPath = agent === 'main' ? '/mcp/main' : agent === 'bahnhof' ? '/mcp/bahnhof' : '/mcp/tickets'
-            const toolName = agent === 'main' ? 'anschluss-mobility' : agent === 'bahnhof' ? 'bahnhofs-ueberleben' : 'ticketkauf'
+            const agentPath = agent === 'main' ? '/mcp/main'
+                : agent === 'bahnhof' ? '/mcp/bahnhof'
+                : agent === 'tickets' ? '/mcp/tickets'
+                : agent === 'radparken' ? '/mcp/radparken'
+                : '/mcp/navigator'
+
+            const toolName = agent === 'main' ? 'anschluss-mobility'
+                : agent === 'bahnhof' ? 'bahnhofs-ueberleben'
+                : agent === 'tickets' ? 'ticketkauf'
+                : agent === 'radparken' ? 'radparken'
+                : 'anschluss-navigator'
             const url = baseUrl + agentPath
 
             try {
@@ -251,6 +277,31 @@
             if( type === 'agent' ) {
                 const html = typeof marked !== 'undefined' && marked.parse ? marked.parse( text ) : text.replace( /\n/g, '<br>' )
                 div.innerHTML = html
+
+                // Render [MAP:...] tags as Leaflet maps
+                const mapMatches = [ ...div.innerHTML.matchAll( /\[MAP:([\d.-]+),([\d.-]+),(\d+),"([^"]+)"\]/g ) ]
+                if( mapMatches.length > 0 ) {
+                    const mapId = 'map-' + Date.now()
+                    const mapDiv = document.createElement( 'div' )
+                    mapDiv.id = mapId
+                    mapDiv.style.cssText = 'height:250px;border-radius:8px;margin:8px 0;'
+
+                    // Remove MAP tags from text
+                    div.innerHTML = div.innerHTML.replace( /\[MAP:[^\]]+\]/g, '' )
+                    div.appendChild( mapDiv )
+
+                    setTimeout( function() {
+                        const firstMatch = mapMatches[ 0 ]
+                        const map = L.map( mapId ).setView( [ parseFloat( firstMatch[ 1 ] ), parseFloat( firstMatch[ 2 ] ) ], parseInt( firstMatch[ 3 ] ) )
+                        L.tileLayer( 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: 'CartoDB' } ).addTo( map )
+
+                        mapMatches.forEach( function( match ) {
+                            L.marker( [ parseFloat( match[ 1 ] ), parseFloat( match[ 2 ] ) ] )
+                                .addTo( map )
+                                .bindPopup( match[ 4 ] )
+                        } )
+                    }, 100 )
+                }
 
                 if( toolCalls && toolCalls.length > 0 ) {
                     const badges = toolCalls.map( function( t ) { return '<span class="tool-badge">' + ( t.name || t.type || 'tool' ) + '</span>' } ).join( '' )
@@ -550,8 +601,36 @@
             this.style.height = Math.min( this.scrollHeight, 120 ) + 'px'
         } )
 
-        // --- Init ---
-        connectSSE()
+        // --- Login ---
+        document.getElementById( 'login-btn' ).addEventListener( 'click', async function() {
+            const username = document.getElementById( 'login-user' ).value
+            const password = document.getElementById( 'login-pass' ).value
+            const errorEl = document.getElementById( 'login-error' )
+
+            try {
+                const resp = await fetch( baseUrl + '/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify( { username, password } )
+                } )
+
+                if( resp.ok ) {
+                    document.getElementById( 'login-screen' ).style.display = 'none'
+                    document.getElementById( 'app-container' ).style.display = 'flex'
+                    connectSSE()
+                } else {
+                    errorEl.textContent = 'Falsche Zugangsdaten'
+                    errorEl.style.display = 'block'
+                }
+            } catch( e ) {
+                errorEl.textContent = 'Verbindungsfehler'
+                errorEl.style.display = 'block'
+            }
+        } )
+
+        document.getElementById( 'login-pass' ).addEventListener( 'keydown', function( e ) {
+            if( e.key === 'Enter' ) document.getElementById( 'login-btn' ).click()
+        } )
     </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 import { AgentToolsServer } from 'mcp-agent-server'
 
 import { EnvironmentManager } from './lib/EnvironmentManager.mjs'
@@ -7,7 +8,7 @@ import { loadManifest } from './lib/manifest-loader.mjs'
 
 
 const env = EnvironmentManager.load( {
-    required: [ 'LLM_BASE_URL', 'LLM_API_KEY' ],
+    required: [ 'LLM_BASE_URL', 'LLM_API_KEY', 'LOGIN_USER', 'LOGIN_PASS' ],
     optional: [ 'NODE_ENV', 'CORS_ORIGIN' ],
     envFile: '../../.hackathon.env'
 } )
@@ -21,7 +22,39 @@ const LLM = {
 
 const app = express()
 app.use( express.json() )
+app.use( cookieParser() )
+
+// --- Fake Login ---
+const SESSION_COOKIE = 'hackathon-session'
+
+app.post( '/api/login', ( req, res ) => {
+    const { username, password } = req.body
+
+    if( username === env[ 'LOGIN_USER' ] && password === env[ 'LOGIN_PASS' ] ) {
+        res.cookie( SESSION_COOKIE, 'authenticated', { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } )
+        res.json( { status: 'ok' } )
+    } else {
+        res.status( 401 ).json( { error: 'Invalid credentials' } )
+    }
+} )
+
 app.use( express.static( 'public' ) )
+
+// --- Auth Middleware (schuetzt /mcp/* gegen externe Requests ohne Login) ---
+const requireAuth = ( req, res, next ) => {
+    const ip = req.ip || req.connection?.remoteAddress || ''
+    const isLocalhost = ip === '127.0.0.1' || ip === '::1' || ip === '::ffff:127.0.0.1'
+    const hasOriginHeader = !!req.headers[ 'origin' ]
+    const isInternalCall = isLocalhost && !hasOriginHeader
+
+    if ( req.cookies?.[ SESSION_COOKIE ] === 'authenticated' || isInternalCall ) {
+        next()
+    } else {
+        res.status( 401 ).json( { error: 'Not authenticated' } )
+    }
+}
+
+app.use( '/mcp', requireAuth )
 
 // --- CORS ---
 const corsOrigin = env[ 'CORS_ORIGIN' ]
@@ -105,6 +138,59 @@ async function startServer() {
     console.log( '  /mcp/tickets — Ticketkauf (ready)' )
 
 
+    // --- Sub-Agent: Radparken + V-Locker ---
+    const radparkenManifest = await loadManifest( { path: './agents/radparken/agent.mjs' } )
+    const radparkenSchemas = await loadSchemas( {
+        providers: [
+            'overpass-mobility',
+            'transport-rest-db',
+            'nominatim',
+            'bright-sky',
+            'nextbike',
+            'infravelo'
+        ]
+    } )
+
+    const vlockerModule = await import( new URL( './agents/radparken/schemas/vlocker.mjs', import.meta.url ).href )
+    radparkenSchemas.push( vlockerModule.main )
+    console.log( '  V-Locker schema loaded (3 tools)' )
+
+    const { mcp: radparkenMcp } = await AgentToolsServer.fromManifest( {
+        manifest: radparkenManifest,
+        llm: LLM,
+        schemas: radparkenSchemas,
+        elicitation: true,
+        routePath: '/mcp/radparken'
+    } )
+    app.use( radparkenMcp.middleware() )
+    app.use( radparkenMcp.sseMiddleware() )
+    console.log( '  /mcp/radparken — Radparken + V-Locker (ready)' )
+
+
+    // --- Sub-Agent: Anschluss-Navigator ---
+    const navigatorManifest = await loadManifest( { path: './agents/anschluss-navigator/agent.mjs' } )
+    const navigatorSchemas = await loadSchemas( {
+        providers: [
+            'transport-rest-db',
+            'transport-rest-vbb',
+            'overpass-mobility',
+            'bright-sky',
+            'nominatim'
+        ]
+    } )
+
+    const { mcp: navigatorMcp } = await AgentToolsServer.fromManifest( {
+        manifest: navigatorManifest,
+        llm: LLM,
+        schemas: navigatorSchemas,
+        elicitation: true,
+        routePath: '/mcp/navigator'
+    } )
+    app.use( navigatorMcp.middleware() )
+    app.use( navigatorMcp.sseMiddleware() )
+    console.log( '  /mcp/navigator — Anschluss-Navigator (ready)' )
+
+
     // --- Main Agent ---
     const mainManifest = await loadManifest( { path: './agents/anschluss-mobility/agent.mjs' } )
 
@@ -114,9 +200,11 @@ async function startServer() {
         schemas: [],
         subAgents: {
             'bahnhofs-ueberleben': { url: `http://localhost:${PORT}/mcp/bahnhof` },
-            'ticketkauf': { url: `http://localhost:${PORT}/mcp/tickets` }
+            'ticketkauf': { url: `http://localhost:${PORT}/mcp/tickets` },
+            'radparken': { url: `http://localhost:${PORT}/mcp/radparken` },
+            'anschluss-navigator': { url: `http://localhost:${PORT}/mcp/navigator` }
         },
-        elicitation: false,
+        elicitation: true,
         routePath: '/mcp/main'
     } )
     app.use( mainMcp.middleware() )
@@ -129,14 +217,16 @@ async function startServer() {
         res.json( {
             name: 'Anschluss Mobility',
             description: 'Multi-agent mobility system for German train travel. Finds tickets, helps stranded travelers, navigates cities, and compares prices across DB and FlixBus.',
-            url: `http://localhost:${PORT}`,
+            url: req.headers.host ? `${req.protocol}://${req.headers.host}` : `http://localhost:${PORT}`,
             version: '1.0.0',
             capabilities: {
                 mcp: {
                     endpoints: [
                         { path: '/mcp/main', description: 'Main Agent — routes to sub-agents' },
                         { path: '/mcp/bahnhof', description: 'Stranded traveler emergency assistant' },
-                        { path: '/mcp/tickets', description: 'Ticket price optimizer (DB vs FlixBus)' }
+                        { path: '/mcp/tickets', description: 'Ticket price optimizer (DB vs FlixBus)' },
+                        { path: '/mcp/radparken', description: 'Bike parking + V-Locker availability' },
+                        { path: '/mcp/navigator', description: 'Real-time connection check for delays' }
                     ]
                 }
             },
@@ -155,7 +245,9 @@ async function startServer() {
             agents: [
                 'anschluss-mobility',
                 'bahnhofs-ueberleben',
-                'ticketkauf'
+                'ticketkauf',
+                'radparken',
+                'anschluss-navigator'
             ],
             uptime: Math.floor( process.uptime() )
         } )
