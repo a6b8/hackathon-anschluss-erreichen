@@ -4,7 +4,11 @@
     "type": "module",
     "description": "Multi-agent mobility system for the DB InfraGO Hackathon - Anschluss erreichen",
     "main": "server.mjs",
+    "engines": {
+        "node": "22.x"
+    },
     "scripts": {
+        "start": "NODE_ENV=staging PORT=8080 node server.mjs",
         "start:dev": "NODE_ENV=development PORT=4100 node server.mjs",
         "start:staging": "NODE_ENV=staging PORT=8080 node server.mjs"
     },
