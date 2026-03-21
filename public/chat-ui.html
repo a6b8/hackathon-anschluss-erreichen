@@ -21,33 +21,46 @@
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Agent Selector */
-        #agent-select { background: #222; color: #e0e0e0; border: 1px solid #444; border-radius: 6px; padding: 4px 8px; font-size: 13px; cursor: pointer; }
+        #agent-select { background: #0f0f0f; color: #4ade80; border: 1px solid #333; border-radius: 8px; padding: 6px 12px; font-size: 13px; font-weight: 500; cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; }
 
         /* Messages */
-        main { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
-        .message { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 14px; line-height: 1.6; word-wrap: break-word; }
+        main { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 88%; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.5; word-wrap: break-word; }
         .message.user { align-self: flex-end; background: #1d4ed8; color: #fff; border-bottom-right-radius: 4px; }
-        .message.agent { align-self: flex-start; background: #1a1a1a; border: 1px solid #333; border-bottom-left-radius: 4px; }
-        .message.agent h2 { font-size: 15px; margin: 8px 0 4px; color: #4ade80; }
-        .message.agent h3 { font-size: 14px; margin: 6px 0 3px; color: #60a5fa; }
-        .message.agent ul, .message.agent ol { margin: 4px 0 4px 20px; }
-        .message.agent li { margin: 2px 0; }
+        .message.agent { align-self: flex-start; background: #1a1a1a; border: 1px solid #333; border-bottom-left-radius: 4px; max-width: 95%; }
+        .message.agent .agent-header { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #333; }
+        .message.agent .agent-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+        .message.agent .agent-name { font-size: 12px; font-weight: 600; color: #4ade80; }
+        .message.agent h2 { font-size: 14px; margin: 8px 0 4px; color: #4ade80; }
+        .message.agent h3 { font-size: 13px; margin: 6px 0 3px; color: #60a5fa; }
+        .message.agent p { margin: 4px 0; }
+        .message.agent ul, .message.agent ol { margin: 4px 0 4px 16px; }
+        .message.agent li { margin: 2px 0; font-size: 13px; }
         .message.agent strong { color: #fff; }
-        .message.agent code { background: #222; padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+        .message.agent code { background: #0f0f0f; padding: 1px 5px; border-radius: 3px; font-size: 12px; font-family: 'JetBrains Mono', monospace; }
+        .message.agent table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; background: #0f0f0f; border-radius: 8px; overflow: hidden; border: 1px solid #333; }
+        .message.agent thead { background: #1a1a1a; }
+        .message.agent th { padding: 6px 10px; text-align: left; color: #64748B; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #333; }
+        .message.agent td { padding: 6px 10px; border-bottom: 1px solid #222; color: #e0e0e0; }
+        .message.agent tr:last-child td { border-bottom: none; }
+        .message.agent blockquote { border-left: 3px solid #4ade80; padding-left: 12px; margin: 8px 0; color: #94A3B8; }
         .message.error { background: #1a0000; border-color: #ef4444; color: #fca5a5; }
-        .message.elicitation { align-self: flex-start; background: #1a1400; border: 1px solid #f59e0b; border-bottom-left-radius: 4px; }
-        .message .tool-badge { display: inline-block; background: #1e3a5f; color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin: 2px 4px 2px 0; }
-        .message .meta { font-size: 11px; color: #666; margin-top: 8px; }
-        #welcome { text-align: center; color: #555; margin-top: 40px; font-size: 14px; }
+        .message.elicitation { align-self: flex-start; background: rgba(245,158,11,0.06); border: 1px solid #f59e0b; border-bottom-left-radius: 4px; max-width: 95%; }
+        .message .tool-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+        .message .tool-badge { display: inline-block; background: #1e3a5f; color: #60a5fa; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 500; }
+        .message .meta { font-size: 10px; color: #475569; margin-top: 8px; padding-top: 6px; border-top: 1px solid #222; font-family: 'JetBrains Mono', monospace; }
+        #welcome { text-align: center; color: #475569; margin-top: 60px; font-size: 14px; }
+        #welcome svg { display: block; margin: 0 auto 12px; }
 
         /* Footer */
-        footer { background: #1a1a1a; border-top: 1px solid #333; padding: 12px 20px; display: flex; gap: 8px; flex-shrink: 0; }
-        #user-input { flex: 1; background: #222; color: #e0e0e0; border: 1px solid #444; border-radius: 8px; padding: 10px 14px; font-size: 14px; font-family: inherit; resize: none; outline: none; min-height: 20px; max-height: 120px; }
+        footer { background: #1a1a1a; border-top: 1px solid #333; padding: 10px 12px; display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
+        #user-input { flex: 1; background: #0f0f0f; color: #e0e0e0; border: 1px solid #333; border-radius: 20px; padding: 10px 16px; font-size: 13px; font-family: inherit; resize: none; outline: none; min-height: 20px; max-height: 120px; }
         #user-input:focus { border-color: #4ade80; }
         #user-input:disabled { opacity: 0.5; }
-        #send-btn { background: #4ade80; color: #000; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+        #send-btn { background: #4ade80; color: #0f0f0f; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 0; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         #send-btn:hover { background: #22c55e; }
         #send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        #send-btn svg { width: 18px; height: 18px; }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -55,12 +68,16 @@
 <body>
     <div id="login-screen" style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0f0f0f;">
         <div style="background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:40px;width:360px;text-align:center;">
-            <h1 style="color:#fff;font-size:24px;margin-bottom:8px;">Anschluss Mobility</h1>
-            <p style="color:#888;font-size:14px;margin-bottom:24px;">Dein KI-Reiseassistent</p>
-            <input id="login-user" type="text" placeholder="Username" style="width:100%;background:#222;color:#e0e0e0;border:1px solid #444;border-radius:8px;padding:10px 14px;font-size:14px;margin-bottom:12px;box-sizing:border-box;" />
-            <input id="login-pass" type="password" placeholder="Password" style="width:100%;background:#222;color:#e0e0e0;border:1px solid #444;border-radius:8px;padding:10px 14px;font-size:14px;margin-bottom:16px;box-sizing:border-box;" />
-            <button id="login-btn" style="width:100%;background:#4ade80;color:#000;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;">Einloggen</button>
+            <div style="margin-bottom:24px;">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+                <h1 style="color:#fff;font-size:26px;margin-bottom:6px;font-weight:700;">Anschluss Mobility</h1>
+                <p style="color:#64748B;font-size:13px;">Radparken &amp; Navigation</p>
+            </div>
+            <input id="login-user" type="text" placeholder="Benutzername" style="width:100%;background:#1a1a1a;color:#e0e0e0;border:1px solid #333;border-radius:8px;padding:14px 16px;font-size:14px;margin-bottom:12px;box-sizing:border-box;outline:none;" />
+            <input id="login-pass" type="password" placeholder="Passwort" style="width:100%;background:#1a1a1a;color:#e0e0e0;border:1px solid #333;border-radius:8px;padding:14px 16px;font-size:14px;margin-bottom:16px;box-sizing:border-box;outline:none;" />
+            <button id="login-btn" style="width:100%;background:#4ade80;color:#0f0f0f;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;">Anmelden</button>
             <div id="login-error" style="color:#ef4444;font-size:13px;margin-top:12px;display:none;"></div>
+            <p style="color:#475569;font-size:11px;margin-top:24px;letter-spacing:0.5px;">Powered by FlowMCP</p>
         </div>
     </div>
 
@@ -84,12 +101,15 @@
     </header>
 
     <main id="messages">
-        <div id="welcome">Stelle eine Frage zu deiner Reise.</div>
+        <div id="welcome">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+            Stelle eine Frage zu deiner Reise.
+        </div>
     </main>
 
     <footer>
-        <textarea id="user-input" placeholder="z.B. Ich bin am Bahnhof Marburg gestrandet..." rows="1"></textarea>
-        <button id="send-btn">Senden</button>
+        <textarea id="user-input" placeholder="Nachricht eingeben..." rows="1"></textarea>
+        <button id="send-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
     </footer>
     </div>
 
@@ -270,13 +290,30 @@
             }
         }
 
+        const agentDisplayNames = { main: 'Anschluss Mobility', bahnhof: 'Bahnhof-Ueberleben', tickets: 'Ticketkauf', radparken: 'Radparken', navigator: 'Navigator' }
+
         function addMessage( text, type, metadata, toolCalls ) {
             const div = document.createElement( 'div' )
             div.className = 'message ' + type
 
             if( type === 'agent' ) {
+                const currentAgent = agentSelect.value
+                const agentName = agentDisplayNames[ currentAgent ] || currentAgent
+
+                // Agent header
+                let headerHtml = '<div class="agent-header"><span class="agent-dot"></span><span class="agent-name">' + agentName + '</span></div>'
+
+                // Tool badges
+                if( toolCalls && toolCalls.length > 0 ) {
+                    const toolOnly = toolCalls.filter( function( t ) { return t.type === 'tool' } )
+                    if( toolOnly.length > 0 ) {
+                        headerHtml += '<div class="tool-badges">' + toolOnly.map( function( t ) { return '<span class="tool-badge">' + ( t.name || 'tool' ) + '</span>' } ).join( '' ) + '</div>'
+                    }
+                }
+
+                // Markdown content
                 const html = typeof marked !== 'undefined' && marked.parse ? marked.parse( text ) : text.replace( /\n/g, '<br>' )
-                div.innerHTML = html
+                div.innerHTML = headerHtml + html
 
                 // Render [MAP:...] tags as Leaflet maps
                 const mapMatches = [ ...div.innerHTML.matchAll( /\[MAP:([\d.-]+),([\d.-]+),(\d+),"([^"]+)"\]/g ) ]
@@ -284,9 +321,8 @@
                     const mapId = 'map-' + Date.now()
                     const mapDiv = document.createElement( 'div' )
                     mapDiv.id = mapId
-                    mapDiv.style.cssText = 'height:250px;border-radius:8px;margin:8px 0;'
+                    mapDiv.style.cssText = 'height:200px;border-radius:12px;margin:8px 0;border:1px solid #333;'
 
-                    // Remove MAP tags from text
                     div.innerHTML = div.innerHTML.replace( /\[MAP:[^\]]+\]/g, '' )
                     div.appendChild( mapDiv )
 
@@ -303,17 +339,13 @@
                     }, 100 )
                 }
 
-                if( toolCalls && toolCalls.length > 0 ) {
-                    const badges = toolCalls.map( function( t ) { return '<span class="tool-badge">' + ( t.name || t.type || 'tool' ) + '</span>' } ).join( '' )
-                    div.innerHTML = badges + div.innerHTML
-                }
-
+                // Meta info
                 if( metadata ) {
                     const rounds = metadata.llmRounds || '?'
                     const tools = metadata.toolCalls || '?'
                     const duration = metadata.duration ? Math.round( metadata.duration / 1000 ) + 's' : '?'
-                    const model = metadata.model || '?'
-                    div.innerHTML += '<div class="meta">' + rounds + ' Runden | ' + tools + ' Tools | ' + duration + ' | ' + model + '</div>'
+                    const model = ( metadata.model || '?' ).split( '/' ).pop()
+                    div.innerHTML += '<div class="meta">' + rounds + ' rounds · ' + tools + ' tools · ' + duration + ' · ' + model + '</div>'
                 }
             } else if( type === 'error' ) {
                 div.textContent = text

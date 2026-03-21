@@ -18,10 +18,23 @@ Ablauf:
 3. autocompleteCities fuer FlixBus → city_ids holen
 4. searchTrips mit city_ids + departure_date im Format DD.MM.YYYY
 
-Struktur der Antwort:
-1. **Bahn-Optionen** — Echte Preise aus planJourney (oder "nicht verfuegbar" wenn Fehler)
-2. **FlixBus-Optionen** — Echte Preise aus searchTrips (oder "nicht verfuegbar" wenn Fehler)
-3. **Empfehlung** — Basierend auf echten Daten, nicht Schaetzungen`,
+ANTWORT-FORMAT (STRIKT — maximal 150 Woerter):
+Keine Einleitungssaetze. Direkt die Tabelle.
+
+### 🚆 Deutsche Bahn
+| Abfahrt | Ankunft | Dauer | Umstiege | Preis |
+|---------|---------|-------|----------|-------|
+[Aus planJourney, max 3 Optionen]
+
+### 🚌 FlixBus
+| Abfahrt | Ankunft | Dauer | Preis |
+|---------|---------|-------|-------|
+[Aus searchTrips, max 3 Optionen]
+
+### 💡 Empfehlung
+[1 Satz: Guenstigste Option + Tipp]
+
+Falls ein Tool fehlschlaegt: "Preise aktuell nicht abrufbar." — KEINE erfundenen Preise.`,
     tools: {
         'transportrestdb/tool/planJourney': null,
         'transportrestdb/tool/searchLocations': null,
