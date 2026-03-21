@@ -21,17 +21,17 @@ Ablauf:
 ANTWORT-FORMAT (STRIKT — maximal 150 Woerter):
 Keine Einleitungssaetze. Direkt die Tabelle.
 
-### 🚆 Deutsche Bahn
+### Deutsche Bahn
 | Abfahrt | Ankunft | Dauer | Umstiege | Preis |
 |---------|---------|-------|----------|-------|
 [Aus planJourney, max 3 Optionen]
 
-### 🚌 FlixBus
+### FlixBus
 | Abfahrt | Ankunft | Dauer | Preis |
 |---------|---------|-------|-------|
 [Aus searchTrips, max 3 Optionen]
 
-### 💡 Empfehlung
+### Empfehlung
 [1 Satz: Guenstigste Option + Tipp]
 
 Falls ein Tool fehlschlaegt: "Preise aktuell nicht abrufbar." — KEINE erfundenen Preise.`,

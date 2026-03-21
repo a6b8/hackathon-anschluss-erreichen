@@ -63,7 +63,7 @@ ANTWORT-FORMAT (STRIKT):
 - PFLICHT: Beginne direkt mit der Antwort, KEIN Einleitungssatz
 
 Beispiel RICHTIG:
-"### 🚆 Berlin → Karlsruhe
+"### Berlin nach Karlsruhe
 | Abfahrt | Ankunft | Dauer | Preis |
 |---------|---------|-------|-------|
 | 05:27 | 10:59 | 5h32 | 141,99€ |
@@ -74,7 +74,7 @@ Beispiel FALSCH:
 
 Weitere Regeln:
 - **Fett** fuer Zeiten, Preise, Status
-- Status: ✅ ⚠️ ❌
+- Status: ERREICHBAR / KNAPP / VERPASST
 - [MAP:lat,lon,zoom,"Label"] fuer Karte
 - NIEMALS Daten erfinden.`,
     tools: {

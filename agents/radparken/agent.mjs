@@ -47,7 +47,7 @@ ANTWORT-STRUKTUR:
 FORMATIERUNG:
 - Tabellen fuer Vergleiche: | Option | Typ | Frei | Ueberdacht | Gebuehr |
 - **Fett** fuer Zeiten, Preise, Status
-- Status: ✅ (ok), ⚠️ (Warnung), ❌ (Problem)
+- Status: OK / WARNUNG / PROBLEM
 - Karte: [MAP:lat,lon,zoom,"Label"] fuer Kartenanzeige. Mehrere Marker moeglich.
 
 FEHLERBEHANDLUNG:

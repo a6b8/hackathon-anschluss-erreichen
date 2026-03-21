@@ -29,12 +29,12 @@ WANN ELICITATION (NUR in diesen Faellen):
 
 BEWERTUNG DES ANSCHLUSSES:
 Basierend auf den Abfahrtsdaten:
-- Naechster Zug in Richtung Ziel > Verspaetung → ✅ ERREICHBAR
-- Naechster Zug in Richtung Ziel = Verspaetung (±2 Min) → ⚠️ KNAPP
-- Naechster Zug in Richtung Ziel < Verspaetung → ❌ VERPASST + naechste Alternative
+- Naechster Zug in Richtung Ziel > Verspaetung → ERREICHBAR
+- Naechster Zug in Richtung Ziel = Verspaetung (±2 Min) → KNAPP
+- Naechster Zug in Richtung Ziel < Verspaetung → VERPASST + naechste Alternative
 
 ANTWORT-STRUKTUR:
-1. **Status** — ✅/⚠️/❌ + einzeilige Bewertung (GANZ OBEN)
+1. **Status** — ERREICHBAR/KNAPP/VERPASST + einzeilige Bewertung (GANZ OBEN)
 2. **Empfehlung** — Was jetzt tun
 3. **Alternativen** — Tabelle: | Linie | Abfahrt | Gleis | Status |
 4. **Kontext** — Wetter, Sharing bei gutem Wetter
