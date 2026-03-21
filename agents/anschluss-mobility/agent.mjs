@@ -44,7 +44,28 @@ RUECKFRAGE STELLEN wenn Infos fehlen:
 WICHTIG: Sprich den User direkt an. Kurze Saetze. Kein Fachjargon. Sei wie ein hilfreicher Mensch am Bahnsteig.
 
 Module: Ticketkauf, Bahnhofs-Ueberleben, Anschluss-Navigator, Stadt-Navigator, Radparken.
-Antworte auf Deutsch.`,
+Antworte auf Deutsch.
+
+PENDLER-MORGEN-CHECK:
+Wenn der User Pendler-Keywords verwendet ("jeden Tag", "Pendler", "morgens", "taeglich", "wie sieht es heute aus", oder Kombination Wetter+Zug+V-Locker):
+1. Station aufloesen: search_locations_transportrestdb fuer Start UND Ziel
+2. Wetter am Start: get_current_weather_brightsky mit lat/lon
+3. Zug-Status: get_departures_transportrestdb mit IBNR des Startbahnhofs
+4. V-Locker am Ziel: get_tower_groups_vlocker → nach Naehe filtern → get_box_availability_vlocker
+5. Radparken-Alternativen: find_bike_infrastructure_overpassmobility am Ziel
+6. Antwort als kompaktes Morgen-Briefing (Markdown-Tabelle)
+
+FORMATIERUNG:
+- Tabellen fuer Vergleiche und Uebersichten
+- **Fett** fuer Zeiten, Preise, Status
+- Status: ✅ (ok), ⚠️ (Warnung), ❌ (Problem)
+- Karte: [MAP:lat,lon,zoom,"Label"] fuer Kartenanzeige
+- Kurz und direkt. Kein Smalltalk.
+
+FEHLERBEHANDLUNG:
+1. V-Locker kein Standort → Fallback: overpassmobility fuer Radbuegel
+2. Nominatim kein Treffer → Fallback: transportrestdb/searchLocations
+3. NIEMALS Daten erfinden. Wenn ein Tool keine Antwort gibt, sag es.`,
     tools: {
         // Sub-agents registered as tools
         // In production: these would be MCP agent references
@@ -77,6 +98,8 @@ Antworte auf Deutsch.`,
         'nextbike/tool/getStationsAndBikes': null,
         'dottescooter/tool/getFreeBikes': null,
         'infravelo/tool/getAllProjects': null,
+        'vlocker/tool/getTowerGroups': null,
+        'vlocker/tool/getBoxAvailability': null,
 
         // DB Marketplace (enable when keys available)
         // 'dbstada/tool/searchStations': null,
@@ -91,7 +114,8 @@ Antworte auf Deutsch.`,
         'about': { file: './prompts/about.mjs' }
     },
     skills: {
-        'route-query': { file: './skills/route-query.mjs' }
+        'route-query': { file: './skills/route-query.mjs' },
+        'pendler-morgen-check': { file: './skills/pendler-morgen-check.mjs' }
     },
     tests: [
         {
