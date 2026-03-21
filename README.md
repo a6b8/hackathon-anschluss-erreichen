@@ -60,6 +60,21 @@ Ein Chat-basierter Reiseassistent der **echte Mobilitaetsdaten** aus 9 APIs komb
 
 Alle APIs sind oeffentlich und benoetigen keinen API-Key.
 
+### DB Marketplace APIs (vorbereitet, Key ausstehend)
+
+Die folgenden DB APIs sind bereits als FlowMCP Schemas integriert, aber noch deaktiviert — ein API-Key vom [DB Marketplace](https://developers.deutschebahn.com/) wird benoetigt.
+
+| API | Daten | Status |
+|-----|-------|--------|
+| RIS::Connections | Echtzeit-Verbindungssuche | Key fehlt |
+| RIS::Boards | Live-Abfahrts-/Ankunftstafeln | Key fehlt |
+| StaDa | Stationsdaten, Ausstattung, Radparken-Flag | Key fehlt |
+| FaSta | Aufzuege/Rolltreppen Status (Barrierefreiheit) | Key fehlt |
+| DB Parking | Parkplatz-Verfuegbarkeit | Key fehlt |
+| DB Shared Mobility | Bike/Scooter-Sharing an Stationen | Key fehlt |
+
+Sobald ein DB API Key vorliegt, koennen diese Tools in den Agent-Manifests aktiviert werden (`DB_API_KEY` als Environment-Variable). Details: [Issue #1](https://github.com/a6b8/hackathon-anschluss-erreichen/issues/1)
+
 ---
 
 ## Architektur
