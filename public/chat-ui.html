@@ -52,6 +52,15 @@
         #welcome { text-align: center; color: #475569; margin-top: 60px; font-size: 14px; }
         #welcome svg { display: block; margin: 0 auto 12px; }
 
+        /* Typing indicator */
+        .message.typing { align-self: flex-start; background: #1a1a1a; border: 1px solid #333; border-bottom-left-radius: 4px; padding: 12px 16px; }
+        .typing-dots { display: flex; gap: 4px; align-items: center; }
+        .typing-dots span { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: typing 1.4s infinite; }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        .typing-status { font-size: 11px; color: #64748B; margin-left: 8px; font-family: 'JetBrains Mono', monospace; }
+        @keyframes typing { 0%,60%,100% { opacity: 0.3; transform: scale(0.8); } 30% { opacity: 1; transform: scale(1); } }
+
         /* Footer */
         footer { background: #1a1a1a; border-top: 1px solid #333; padding: 10px 12px; display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
         #user-input { flex: 1; background: #0f0f0f; color: #e0e0e0; border: 1px solid #333; border-radius: 20px; padding: 10px 16px; font-size: 13px; font-family: inherit; resize: none; outline: none; min-height: 20px; max-height: 120px; }
@@ -153,17 +162,22 @@
         }
 
         function handleSSE( type, payload ) {
+            const typingStatus = document.querySelector( '#typing-indicator .typing-status' )
+
             if( type === 'agent:start' ) {
                 setStatus( 'Thinking...', true )
+                if( typingStatus ) typingStatus.textContent = 'Denkt nach...'
             } else if( type === 'agent:status' ) {
                 const msg = payload.message || ''
                 const round = payload.round || 0
                 setStatus( 'Round ' + round + ' | ' + msg, true )
+                if( typingStatus ) typingStatus.textContent = 'Runde ' + round + ': ' + msg.slice( 0, 40 )
             } else if( type === 'agent:complete' ) {
                 setStatus( 'Complete', false )
             } else if( type === 'agent:error' ) {
                 setStatus( 'Error: ' + ( payload.error || 'Unknown' ), false )
             }
+            messagesEl.scrollTop = messagesEl.scrollHeight
         }
 
         function setStatus( text, working ) {
@@ -203,6 +217,14 @@
 
             addMessage( query, 'user' )
             setStatus( 'Connecting...', true )
+
+            // Show typing indicator
+            const typingEl = document.createElement( 'div' )
+            typingEl.className = 'message typing'
+            typingEl.id = 'typing-indicator'
+            typingEl.innerHTML = '<div style="display:flex;align-items:center;"><div class="typing-dots"><span></span><span></span><span></span></div><span class="typing-status">Verbinde...</span></div>'
+            messagesEl.appendChild( typingEl )
+            messagesEl.scrollTop = messagesEl.scrollHeight
 
             const agent = agentSelect.value
             const agentPath = agent === 'main' ? '/mcp/main'
@@ -283,8 +305,12 @@
                     processAgentResponse( data )
                 }
 
+                const typingEl2 = document.getElementById( 'typing-indicator' )
+                if( typingEl2 ) typingEl2.remove()
                 setStatus( 'Idle', false )
             } catch( err ) {
+                const typingEl3 = document.getElementById( 'typing-indicator' )
+                if( typingEl3 ) typingEl3.remove()
                 addMessage( 'Fehler: ' + err.message, 'error' )
                 setStatus( 'Error', false )
             }

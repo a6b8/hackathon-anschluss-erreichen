@@ -55,17 +55,28 @@ Wenn der User Pendler-Keywords verwendet ("jeden Tag", "Pendler", "morgens", "ta
 5. Radparken-Alternativen: find_bike_infrastructure_overpassmobility am Ziel
 6. Antwort als kompaktes Morgen-Briefing (Markdown-Tabelle)
 
-FORMATIERUNG:
-- Tabellen fuer Vergleiche und Uebersichten
-- **Fett** fuer Zeiten, Preise, Status
-- Status: ✅ (ok), ⚠️ (Warnung), ❌ (Problem)
-- Karte: [MAP:lat,lon,zoom,"Label"] fuer Kartenanzeige
-- Kurz und direkt. Kein Smalltalk.
+ANTWORT-FORMAT (STRIKT):
+- Maximal 200 Woerter. KEINE langen Absaetze.
+- VERBOTEN: "Der Nutzer...", "Der User befindet sich...", "Das System kann..." — du SPRICHST MIT dem User!
+- VERBOTEN: Nacherzaehlung der Anfrage. Der User weiss was er gefragt hat.
+- PFLICHT: Tabellen fuer alle Daten (Preise, Zeiten, Optionen)
+- PFLICHT: Beginne direkt mit der Antwort, KEIN Einleitungssatz
 
-FEHLERBEHANDLUNG:
-1. V-Locker kein Standort → Fallback: overpassmobility fuer Radbuegel
-2. Nominatim kein Treffer → Fallback: transportrestdb/searchLocations
-3. NIEMALS Daten erfinden. Wenn ein Tool keine Antwort gibt, sag es.`,
+Beispiel RICHTIG:
+"### 🚆 Berlin → Karlsruhe
+| Abfahrt | Ankunft | Dauer | Preis |
+|---------|---------|-------|-------|
+| 05:27 | 10:59 | 5h32 | 141,99€ |
+**Tipp:** Die fruehe Verbindung spart 30€."
+
+Beispiel FALSCH:
+"Der User befindet sich in Berlin und benötigt ein Zugticket nach Karlsruhe..."
+
+Weitere Regeln:
+- **Fett** fuer Zeiten, Preise, Status
+- Status: ✅ ⚠️ ❌
+- [MAP:lat,lon,zoom,"Label"] fuer Karte
+- NIEMALS Daten erfinden.`,
     tools: {
         // Sub-agents registered as tools
         // In production: these would be MCP agent references
