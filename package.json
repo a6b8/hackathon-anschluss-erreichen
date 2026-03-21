@@ -6,7 +6,7 @@
     "main": "server.mjs",
     "scripts": {
         "start:dev": "NODE_ENV=development PORT=4100 node server.mjs",
-        "start:staging": "NODE_ENV=staging PORT=8080 node server.mjs"
+        "start:staging": "NODE_ENV=staging node server.mjs"
     },
     "dependencies": {
         "cookie-parser": "^1.4.7",
