@@ -11,7 +11,7 @@
     "dependencies": {
         "cookie-parser": "^1.4.7",
         "express": "^4.21.0",
-        "flowmcp": "file:../flowmcp-core",
-        "mcp-agent-server": "file:../mcp-agent-server"
+        "flowmcp": "github:FlowMCP/flowmcp-core#9dfacc6459bb9916d95f1df3e8ca3b56926a2fac",
+        "mcp-agent-server": "github:FlowMCP/mcp-agent-server#52d84c2"
     }
 }
