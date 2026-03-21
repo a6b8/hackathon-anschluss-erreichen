@@ -1,1 +1,0 @@
-{"round":1,"timestamp":"2026-03-18T13:24:09.033Z","llmInput":{"messageCount":1,"systemPromptLength":1404,"toolCount":4},"llmOutput":{"textBlocks":["Von wo möchtest du denn nach Berlin fahren?"],"toolCalls":[],"inputTokens":1997,"outputTokens":16},"toolResults":[]}
