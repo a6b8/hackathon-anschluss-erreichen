@@ -1,5 +1,7 @@
 # Anschluss Mobility
 
+**3. Platz** — "Anschluss erreichen" Hackathon
+
 > Multi-Agent KI-Reiseassistent fuer die erste und letzte Meile rund um Bahnhoefe — gebaut beim **"Anschluss erreichen" Hackathon** (BMV, DB InfraGO, DB mindbox), Berlin Hauptbahnhof, 20.–21. Maerz 2026.
 
 ![Architecture](docs/overview.png)
@@ -200,7 +202,9 @@ hackathon-anschluss-erreichen/
 
 ## Team
 
-Gebaut beim "Anschluss erreichen" Hackathon, 20.–21. Maerz 2026.
+**3. Platz** beim "Anschluss erreichen" Hackathon, 20.–21. Maerz 2026, Berlin Hauptbahnhof.
+
+Praesentiert auf der ["Anschluss erreichen" Konferenz](https://data.deutschebahn.com/opendata/Veranstaltungen/Anschluss-erreichen-Hackathon-13704734), 19.–20. Mai 2026.
 
 **Powered by** [FlowMCP](https://github.com/FlowMCP) — Open-Source MCP Schema Tools fuer LLM Agenten.
 
