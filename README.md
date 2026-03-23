@@ -75,7 +75,7 @@ Die folgenden DB APIs sind bereits als FlowMCP Schemas integriert, aber noch dea
 | DB Parking | Parkplatz-Verfuegbarkeit | Key fehlt |
 | DB Shared Mobility | Bike/Scooter-Sharing an Stationen | Key fehlt |
 
-Sobald ein DB API Key vorliegt, koennen diese Tools in den Agent-Manifests aktiviert werden (`DB_API_KEY` als Environment-Variable). Details: [Issue #1](https://github.com/a6b8/hackathon-anschluss-erreichen/issues/1)
+Sobald ein DB API Key vorliegt, koennen diese Tools in den Agent-Manifests aktiviert werden (`DB_API_KEY` als Environment-Variable). Details: [Issue #1](https://github.com/open-data-enabled-ai/hackathon-anschluss-erreichen/issues/1)
 
 ---
 
@@ -117,7 +117,7 @@ Chat UI (Dark Mode)
 
 ```bash
 # 1. Clone
-git clone https://github.com/a6b8/hackathon-anschluss-erreichen.git
+git clone https://github.com/open-data-enabled-ai/hackathon-anschluss-erreichen.git
 cd hackathon-anschluss-erreichen
 
 # 2. Dependencies
