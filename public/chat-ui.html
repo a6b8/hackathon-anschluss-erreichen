@@ -698,6 +698,16 @@
         document.getElementById( 'login-pass' ).addEventListener( 'keydown', function( e ) {
             if( e.key === 'Enter' ) document.getElementById( 'login-btn' ).click()
         } )
+
+        // --- Autofill from URL params ---
+        const urlParams = new URLSearchParams( window.location.search )
+        const autoUser = urlParams.get( 'u' )
+        const autoPass = urlParams.get( 'p' )
+        if( autoUser && autoPass ) {
+            document.getElementById( 'login-user' ).value = autoUser
+            document.getElementById( 'login-pass' ).value = autoPass
+            document.getElementById( 'login-btn' ).click()
+        }
     </script>
 </body>
 </html>
